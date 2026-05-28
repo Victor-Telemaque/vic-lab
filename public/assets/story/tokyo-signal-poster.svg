@@ -1,0 +1,16 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" fill="#12131A"/>
+  <ellipse cx="235" cy="110" rx="278" ry="212" fill="#FF2D55" fill-opacity="0.22"/>
+  <ellipse cx="998" cy="190" rx="301" ry="236" fill="#00C2A8" fill-opacity="0.16"/>
+  <ellipse cx="600" cy="468" rx="430" ry="250" fill="#F5F7FF" fill-opacity="0.07"/>
+  <path d="M0 610C136 555 242 589 368 622C485 653 584 668 707 618C840 563 956 574 1200 669V760H0V610Z" fill="#0E0E10"/>
+  <path d="M0 636C139 593 253 622 378 659C489 692 597 699 727 659C855 620 967 622 1200 708V760H0V636Z" fill="#1A1B23"/>
+  <g opacity="0.78">
+    <path d="M474 326L603 216L724 326V474H474V326Z" stroke="#F5F7FF" stroke-opacity="0.4" stroke-width="2"/>
+    <path d="M603 216V474" stroke="#F5F7FF" stroke-opacity="0.4" stroke-width="2"/>
+    <path d="M474 366H724" stroke="#F5F7FF" stroke-opacity="0.3" stroke-width="2"/>
+    <path d="M474 422H724" stroke="#F5F7FF" stroke-opacity="0.25" stroke-width="2"/>
+  </g>
+  <text x="72" y="95" fill="#F5F7FF" fill-opacity="0.82" font-size="30" font-family="Arial, sans-serif" letter-spacing="6">TOKYO SIGNAL</text>
+  <text x="72" y="135" fill="#F5F7FF" fill-opacity="0.58" font-size="20" font-family="Arial, sans-serif" letter-spacing="2">NARRATIVE SLOT / PLACEHOLDER POSTER</text>
+</svg>

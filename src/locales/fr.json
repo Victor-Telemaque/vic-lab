@@ -1,0 +1,21 @@
+{
+  "hero.kicker": "Tokyo Signal / Frontend Creative Lab",
+  "hero.title": "Je conçois des experiences web qui allient rigueur produit et emotions visuelles.",
+  "hero.lead": "Front-end developer freelance, j'aide des equipes a construire des plateformes robustes, interactives et memorables.",
+  "hero.projectsCta": "Voir les case studies",
+  "hero.contactCta": "Discuter d'un projet",
+  "hero.narrativeLabel": "Narrative Visual Slot",
+  "hero.narrativeDescription": "Zone prete pour tes assets: image fallback + loop video si disponible.",
+  "story.text": "Mon approche: transformer des systemes complexes en parcours clairs, performants et desirables.",
+  "projects.label": "Case Studies",
+  "projects.title": "Des produits concrets, pas juste des interfaces.",
+  "about.label": "About",
+  "about.title": "Developpeur creatif, pensee produit, execution solide.",
+  "about.description": "Je travaille a l'intersection entre architecture front-end et direction visuelle. J'aime les projets ou chaque decision technique sert l'experience utilisateur et la lisibilite business.",
+  "contact.label": "Contact",
+  "contact.title": "Disponible pour mission freelance ou poste front-end creatif.",
+  "contact.description": "Base en Europe, objectif expatriation au Japon.",
+  "language.label": "Langue",
+  "language.fr": "FR",
+  "language.en": "EN"
+}

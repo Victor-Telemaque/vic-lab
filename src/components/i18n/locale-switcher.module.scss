@@ -1,0 +1,27 @@
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.22rem;
+  background: rgba(21, 22, 28, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.button,
+.active {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.3rem 0.62rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  background: transparent;
+}
+
+.active {
+  background: var(--color-surface-soft);
+  color: var(--color-text);
+}
