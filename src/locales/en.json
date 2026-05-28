@@ -17,5 +17,8 @@
   "contact.description": "Based in Europe, targeting relocation to Japan.",
   "language.label": "Language",
   "language.fr": "FR",
-  "language.en": "EN"
+  "language.en": "EN",
+  "theme.toggleLabel": "Toggle theme",
+  "theme.light": "Light",
+  "theme.dark": "Dark"
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans_JP, Manrope } from "next/font/google";
 import { AppIntlProvider } from "@/components/i18n/intl-provider";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import "./globals.scss";
 
 const manrope = Manrope({
@@ -33,7 +34,9 @@ export default function RootLayout({
       className={`${manrope.variable} ${ibmPlexSansJp.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <AppIntlProvider>{children}</AppIntlProvider>
+        <ThemeProvider>
+          <AppIntlProvider>{children}</AppIntlProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

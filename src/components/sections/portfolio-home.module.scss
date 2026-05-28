@@ -28,13 +28,13 @@
 .glowOrb:nth-child(1) {
   top: -8%;
   left: -10%;
-  background: radial-gradient(circle, rgba(255, 45, 85, 0.4), transparent 70%);
+  background: radial-gradient(circle, rgba(242, 140, 191, 0.44), transparent 70%);
 }
 
 .glowOrb:nth-child(2) {
   top: 28%;
   right: -12%;
-  background: radial-gradient(circle, rgba(0, 194, 168, 0.34), transparent 68%);
+  background: radial-gradient(circle, rgba(136, 217, 198, 0.42), transparent 68%);
   animation-delay: 1.8s;
 }
 
@@ -47,7 +47,7 @@
     transparent 0.8px
   );
   background-size: 3px 3px;
-  mix-blend-mode: soft-light;
+  mix-blend-mode: overlay;
 }
 
 .hero {
@@ -60,6 +60,8 @@
 .topBar {
   display: flex;
   justify-content: flex-end;
+  gap: 0.55rem;
+  flex-wrap: wrap;
 }
 
 .kicker {
@@ -133,13 +135,15 @@
 }
 
 .primaryAction {
-  background: linear-gradient(110deg, var(--color-accent), #ff5f7c);
-  color: #ffffff;
+  background: linear-gradient(110deg, #f28cbf, #b9b0f5);
+  color: #2f2a4c;
+  box-shadow: 0 8px 24px rgba(185, 176, 245, 0.35);
 }
 
 .secondaryAction {
   border-color: var(--color-border);
   color: var(--color-text);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .primaryAction:hover,
@@ -150,10 +154,10 @@
 .narrativePanel {
   margin-top: 0.8rem;
   max-width: 60ch;
-  border: 1px dashed rgba(245, 247, 255, 0.35);
+  border: 1px dashed rgba(126, 113, 175, 0.35);
   border-radius: 1rem;
   padding: 1rem 1.1rem;
-  background: rgba(21, 22, 28, 0.55);
+  background: rgba(255, 248, 252, 0.78);
   backdrop-filter: blur(4px);
 }
 
@@ -180,8 +184,8 @@
   border: 1px solid var(--color-border);
   background: linear-gradient(
     145deg,
-    rgba(255, 45, 85, 0.08),
-    rgba(0, 194, 168, 0.06) 60%,
+    rgba(242, 140, 191, 0.2),
+    rgba(136, 217, 198, 0.17) 60%,
     transparent
   );
 }
@@ -252,7 +256,8 @@
 
 .caseCard:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 45, 85, 0.5);
+  border-color: rgba(242, 140, 191, 0.58);
+  box-shadow: 0 12px 30px rgba(185, 176, 245, 0.26);
 }
 
 .caseCard h3,

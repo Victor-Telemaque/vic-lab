@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useIntl } from "react-intl";
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import { useAppLocale } from "@/components/i18n/intl-provider";
+import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 import { NarrativeMedia } from "@/components/media/narrative-media";
 import {
   caseStudies,
@@ -31,6 +32,7 @@ export function PortfolioHome() {
 
       <section className={styles.hero}>
         <div className={styles.topBar}>
+          <ThemeSwitcher />
           <LocaleSwitcher />
         </div>
         <motion.p

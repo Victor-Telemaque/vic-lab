@@ -4,8 +4,8 @@
   min-height: 230px;
   border-radius: 0.9rem;
   overflow: hidden;
-  border: 1px solid rgba(245, 247, 255, 0.26);
-  background: #161820;
+  border: 1px solid rgba(126, 113, 175, 0.3);
+  background: #ece7ff;
 }
 
 .media {
@@ -21,9 +21,9 @@
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(14, 14, 16, 0.14),
-    rgba(14, 14, 16, 0.55) 62%,
-    rgba(14, 14, 16, 0.75)
+    rgba(244, 236, 255, 0.14),
+    rgba(111, 106, 150, 0.22) 62%,
+    rgba(46, 42, 74, 0.38)
   );
   pointer-events: none;
 }

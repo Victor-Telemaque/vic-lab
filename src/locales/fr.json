@@ -17,5 +17,8 @@
   "contact.description": "Base en Europe, objectif expatriation au Japon.",
   "language.label": "Langue",
   "language.fr": "FR",
-  "language.en": "EN"
+  "language.en": "EN",
+  "theme.toggleLabel": "Changer de theme",
+  "theme.light": "Light",
+  "theme.dark": "Dark"
 }
