@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans_JP, Manrope } from "next/font/google";
 import { AppIntlProvider } from "@/components/i18n/intl-provider";
+import { LavaLampBackground } from "@/components/effects/lava-lamp-background";
+import { ThemeInitScript } from "@/components/theme/theme-init-script";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import "./globals.scss";
 
@@ -31,9 +33,12 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
+      suppressHydrationWarning
       className={`${manrope.variable} ${ibmPlexSansJp.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <ThemeInitScript />
+        <LavaLampBackground />
         <ThemeProvider>
           <AppIntlProvider>{children}</AppIntlProvider>
         </ThemeProvider>

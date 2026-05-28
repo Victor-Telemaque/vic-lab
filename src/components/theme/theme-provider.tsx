@@ -16,23 +16,21 @@ type Props = {
   children: React.ReactNode;
 };
 
-function getDefaultTheme(): Theme {
-  if (typeof window === "undefined") {
-    return "light";
-  }
-
+function readStoredTheme(): Theme {
   const savedTheme = window.localStorage.getItem("portfolio-theme");
   if (savedTheme === "light" || savedTheme === "dark") {
     return savedTheme;
   }
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export function ThemeProvider({ children }: Props) {
-  const [theme, setTheme] = useState<Theme>(getDefaultTheme);
+  const [theme, setTheme] = useState<Theme>("light");
+
+  useEffect(() => {
+    setTheme(readStoredTheme());
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -46,7 +44,7 @@ export function ThemeProvider({ children }: Props) {
       setTheme,
       toggleTheme: () => setTheme((prev) => (prev === "light" ? "dark" : "light")),
     }),
-    [theme]
+    [theme],
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

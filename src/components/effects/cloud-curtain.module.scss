@@ -1,0 +1,136 @@
+.stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.curtain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.panel {
+  position: absolute;
+  top: -8%;
+  width: 66vw;
+  height: 118%;
+  overflow: visible;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.panelLeft {
+  right: 50%;
+}
+
+.panelRight {
+  left: 50%;
+}
+
+.panelMirror {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: scaleX(-1);
+}
+
+.cloudImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.58;
+  pointer-events: none;
+  user-select: none;
+  filter: saturate(0.72) hue-rotate(48deg) brightness(1.06)
+    drop-shadow(0 12px 28px rgba(46, 42, 74, 0.1));
+}
+
+.panelLeft .cloudImage {
+  object-position: right center;
+}
+
+.panelRight .cloudImage {
+  object-position: left center;
+}
+
+.cloudGradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    128deg,
+    rgba(185, 176, 245, 0.34) 0%,
+    rgba(255, 214, 232, 0.28) 42%,
+    rgba(136, 217, 198, 0.22) 100%
+  );
+  opacity: 0.38;
+  mix-blend-mode: soft-light;
+  -webkit-mask-image: url('/assets/picto/pastel-cloud.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: cover;
+  mask-image: url('/assets/picto/pastel-cloud.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+}
+
+:global([data-theme='dark']) {
+  .cloudImage {
+    opacity: 0.5;
+    filter: saturate(0.68) hue-rotate(52deg) brightness(0.95)
+      drop-shadow(0 14px 32px rgba(8, 6, 20, 0.35));
+  }
+
+  .cloudGradient {
+    background: linear-gradient(
+      128deg,
+      rgba(175, 162, 242, 0.28) 0%,
+      rgba(243, 170, 205, 0.22) 45%,
+      rgba(130, 210, 195, 0.18) 100%
+    );
+    opacity: 0.32;
+    mix-blend-mode: screen;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    top: -2%;
+    width: min(86vw, 100%);
+    height: 108%;
+  }
+
+  .cloudImage {
+    opacity: 0.44;
+    filter: saturate(0.68) hue-rotate(48deg) brightness(1.04)
+      drop-shadow(0 8px 18px rgba(46, 42, 74, 0.08));
+  }
+
+  .cloudGradient {
+    opacity: 0.28;
+  }
+}
+
+@media (max-width: 520px) {
+  .panel {
+    width: min(80vw, 100%);
+  }
+
+  .cloudImage {
+    opacity: 0.38;
+  }
+}
