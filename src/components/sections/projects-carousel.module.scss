@@ -1,0 +1,96 @@
+.wrapper {
+  display: grid;
+  gap: 1rem;
+}
+
+.carousel {
+  --embla-viewport-padding: clamp(1.1rem, 4.5vw, 2rem);
+  --embla-slide-size: clamp(16rem, 72cqw, 22rem);
+  --embla-slide-spacing: 1rem;
+}
+
+.partnerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: clamp(3.25rem, 8vw, 3.75rem);
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--logo-stage-border);
+  background: var(--logo-stage-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.partnerLogoImage {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(10.5rem, 100%) !important;
+  max-height: clamp(2.25rem, 5.5vw, 2.85rem) !important;
+  object-fit: contain;
+  object-position: center;
+}
+
+.partnerLogoImageWide {
+  max-width: min(12.5rem, 100%) !important;
+  max-height: clamp(2.5rem, 6vw, 3.1rem) !important;
+}
+
+.partnerSummary {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.detailsPanel {
+  margin: 0;
+  padding: 0.85rem 1rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 55%, var(--color-surface-soft));
+}
+
+.detailsBody {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  white-space: pre-line;
+}
+
+.stackLogo {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: clamp(7rem, 18vw, 8.5rem);
+  padding: 1rem 0.85rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--logo-stage-border);
+  background: var(--logo-stage-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.stackLogoImage {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(11rem, 100%) !important;
+  max-height: clamp(3rem, 7vw, 4rem) !important;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    --embla-viewport-padding: 1rem;
+    --embla-slide-size: clamp(14rem, 76cqw, 18rem);
+    --embla-slide-spacing: 0.8rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .carousel {
+    --embla-viewport-padding: 0.85rem;
+    --embla-slide-size: clamp(13rem, 80cqw, 16.5rem);
+    --embla-slide-spacing: 0.65rem;
+  }
+}

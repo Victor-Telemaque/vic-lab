@@ -1,65 +1,120 @@
-export type CaseStudy = {
-  title: { fr: string; en: string };
+export type BrandLogo = {
+  id: string;
+  name: string;
+  src: string;
+};
+
+export type PartnerProject = {
+  id: string;
+  name: string;
+  logoSrc: string;
+  logoVariant?: "default" | "wide";
   role: { fr: string; en: string };
   summary: { fr: string; en: string };
-  impact: { fr: string; en: string };
+  details?: { fr: string; en: string };
   tags: string[];
 };
 
-export const caseStudies: CaseStudy[] = [
+export const partnerProjects: PartnerProject[] = [
   {
-    title: { fr: "FlowPilot Platform", en: "FlowPilot Platform" },
-    role: { fr: "Lead Front-End Architect", en: "Lead Front-End Architect" },
+    id: "telemaque",
+    name: "Telemaque",
+    logoSrc: "/assets/picto/partners/telemaque-logo.png",
+    role: { fr: "Alternance Front-End", en: "Front-End Apprenticeship" },
     summary: {
-      fr: "Conception d'une plateforme modulaire multi-role pour orchestrer des workflows produit, analytics et operations.",
-      en: "Designed a modular multi-role platform to orchestrate product workflows, analytics, and operations.",
+      fr: "Bug fixes et CRM interne pour fluidifier les workflows de l'équipe.",
+      en: "Bug fixes and internal CRM to streamline team workflows.",
     },
-    impact: {
-      fr: "+42% de vitesse de delivery produit en 6 mois",
-      en: "+42% product delivery speed in 6 months",
+    details: {
+      fr: "Formation en alternance, orientée maintenance corrective et évolution d'un CRM facilitant le workflow interne de l'entreprise.",
+      en: "Apprenticeship focused on maintenance, bug fixes, and evolving an internal CRM to streamline company workflows.",
     },
-    tags: ["Next.js", "Design System", "Monorepo", "Role-based Modules"],
+    tags: ["Vue.js", "CRM", "Alternance"],
   },
   {
-    title: { fr: "Nova Commerce Suite", en: "Nova Commerce Suite" },
-    role: { fr: "Frontend Product Engineer", en: "Frontend Product Engineer" },
+    id: "citihub",
+    name: "Citihub",
+    logoSrc: "/assets/picto/partners/citihub-logo.png",
+    logoVariant: "wide",
+    role: { fr: "Développeur Front-End", en: "Front-End Developer" },
     summary: {
-      fr: "Refonte d'un espace e-commerce B2B en experience orientee conversion avec architecture front composable.",
-      en: "Rebuilt a B2B e-commerce workspace into a conversion-driven experience with composable front-end architecture.",
+      fr: "Consolidation monorepo, design system partagé et refonte du module cimetière.",
+      en: "Monorepo consolidation, shared design system, and cemetery module overhaul.",
     },
-    impact: {
-      fr: "+28% d'activation utilisateur sur le funnel principal",
-      en: "+28% user activation on the main funnel",
+    details: {
+      fr: "Revue de l'architecture monorepo : séparation modules métier, design system et assets partagés — onboarding et maintenance facilités.\n\nSocle frontend scalable : mutualisation des composants, conventions cohérentes, moins de duplication.\n\nRefonte du module cimetière (layouts, cards, modales) et data tables multi-vues (tri, recherche, pagination, mobile).\n\nOptimisation des flux défunts, tombes, secteurs et inhumations.",
+      en: "Monorepo architecture review: domain modules, design system, and shared assets — easier onboarding and maintenance.\n\nScalable front-end foundation: shared components, consistent conventions, less duplication.\n\nCemetery module overhaul (layouts, cards, modals) and multi-view data tables (sort, search, pagination, mobile).\n\nOptimized workflows for deceased records, graves, sectors, and burials.",
     },
-    tags: ["React", "UX Strategy", "Motion", "Performance"],
+    tags: ["Angular", "Monorepo", "Design System"],
   },
   {
-    title: { fr: "Atlas Ops Console", en: "Atlas Ops Console" },
-    role: { fr: "Freelance / Entrepreneur", en: "Freelance / Entrepreneur" },
+    id: "thermorezo",
+    name: "Thermorezo",
+    logoSrc: "/assets/picto/partners/thermorezo-logo.png",
+    logoVariant: "wide",
+    role: { fr: "Développeur Front-End", en: "Front-End Developer" },
     summary: {
-      fr: "Creation d'une console metier temps reel pour equipes terrain avec visualisation de donnees et interactions avancees.",
-      en: "Built a real-time operations console for field teams with advanced data visualization and interactions.",
+      fr: "Consolidation frontend ERP : responsive, TypeScript, design system et modules métier.",
+      en: "ERP front-end consolidation: responsive, TypeScript, design system, and business modules.",
     },
-    impact: {
-      fr: "-35% de temps de traitement des taches critiques",
-      en: "-35% processing time on critical tasks",
+    details: {
+      fr: "Responsive & mobile : vues affaires, listes, sidebar, navigation et onglets stabilisés.\n\nDesign system @thermorezo/ui : migration cartovision-ui, nouveaux inputs (ColorPicker, Date, Radio), modales harmonisées.\n\nQualité TypeScript : réduction massive des any, typage client $api, code mort retiré.\n\nRefactor ERP : affaires, SharePoint, facturation, easements/workflow et settings découpés en composables.",
+      en: "Responsive & mobile: business views, lists, sidebar, navigation, and tabs stabilized.\n\nDesign system @thermorezo/ui: cartovision-ui migration, new inputs (ColorPicker, Date, Radio), harmonized modals.\n\nTypeScript quality: major reduction of any types, $api client typing, dead code removed.\n\nERP refactor: business, SharePoint, billing, easements/workflow, and settings split into composables.",
     },
-    tags: ["TypeScript", "Data Viz", "DX", "Scalable Frontend"],
+    tags: ["Vue.js", "TypeScript", "ERP"],
   },
+  {
+    id: "horoscope",
+    name: "Horoscope.fr",
+    logoSrc: "/assets/picto/partners/logo-horoscope.png",
+    role: { fr: "Développeuse Front-End", en: "Front-End Developer" },
+    summary: {
+      fr: "Campagnes horoscope interactives sur une plateforme Next.js à fort trafic.",
+      en: "Interactive horoscope campaigns on a high-traffic Next.js platform.",
+    },
+    details: {
+      fr: "Contribution front-end sur horoscope.fr (Télémaque) : Next.js, React, TypeScript, Redux.\n\nCampagnes interactives (amour, automne, Nouvel An chinois, printemps) : landing pages animées, sélection de signe, formulaires d'acquisition, i18n (4 langues).\n\nCorrectifs SEO (meta titles, URLs canoniques) et API jeux (typage TS, robustesse des endpoints).",
+      en: "Front-end contribution on horoscope.fr (Télémaque): Next.js, React, TypeScript, Redux.\n\nInteractive campaigns (love, autumn, Chinese New Year, spring): animated landings, sign selection, acquisition forms, i18n (4 languages).\n\nSEO fixes (meta titles, canonical URLs) and games API (TS typing, endpoint robustness).",
+    },
+    tags: ["Next.js", "React", "Redux"],
+  },
+  {
+    id: "arcgis",
+    name: "ArcGIS",
+    logoSrc: "/assets/picto/partners/ArcGIS-logo.png",
+    logoVariant: "wide",
+    role: { fr: "Intégrateur Front-End", en: "Front-End Integrator" },
+    summary: {
+      fr: "Cartes interactives et widgets géographiques intégrés dans des applications web.",
+      en: "Interactive maps and geographic widgets embedded in web applications.",
+    },
+    tags: ["ArcGIS API", "Maps", "Integration"],
+  },
+];
+
+export const stackLogos: BrandLogo[] = [
+  { id: "vue", name: "Vue.js", src: "/assets/picto/stacks/logo-vue.webp" },
+  { id: "react", name: "React", src: "/assets/picto/stacks/logo-react.webp" },
+  { id: "typescript", name: "TypeScript", src: "/assets/picto/stacks/typescript-logo.png" },
+  { id: "next", name: "Next.js", src: "/assets/picto/stacks/logo-next.webp" },
+  { id: "angular", name: "Angular", src: "/assets/picto/stacks/logo-angular.png" },
+  { id: "tailwind", name: "Tailwind CSS", src: "/assets/picto/stacks/tailwind-css-logo-vector.png" },
+  { id: "sass", name: "Sass", src: "/assets/picto/stacks/sass-logo.png" },
+  { id: "redux", name: "Redux", src: "/assets/picto/stacks/Redux-logo.png" },
+  { id: "zustand", name: "Zustand", src: "/assets/picto/stacks/zustand-logo.png" },
+  { id: "react-query", name: "TanStack Query", src: "/assets/picto/stacks/react-query-logo.png" },
 ];
 
 export const skillHighlights = {
   fr: [
-    "Architecture Front-End scalable",
-    "Motion Design oriente produit",
-    "UI Engineering haute fidelite",
-    "Performance et SEO technique",
+    "Architecture & design systems",
+    "Vue, React, TypeScript",
+    "Produit, perf, delivery",
   ],
   en: [
-    "Scalable Front-End architecture",
-    "Product-focused motion design",
-    "High-fidelity UI engineering",
-    "Performance and technical SEO",
+    "Architecture & design systems",
+    "Vue, React, TypeScript",
+    "Product, performance, delivery",
   ],
 } as const;
 
@@ -68,3 +123,87 @@ export const narrativeMedia = {
   videoSrc: "/assets/story/tokyo-signal-loop.mp4",
   alt: "Atmosphere visuelle Tokyo Signal, entre nature, lumiere et urban signal.",
 };
+
+export const heroVisual = {
+  logoSrc: "/assets/story/vic-labs-logo.png",
+  alt: "Vic Lab",
+};
+
+export const heroBackground = {
+  videoSrc: "/assets/vidéo/7504970-uhd_3840_2160_30fps (1).mp4",
+  posterSrc: "/assets/story/peaceful-train.jpg",
+};
+
+export const stackBackground = {
+  videoSrc: "/assets/vidéo/14482700_3840_2160_25fps.mp4",
+  posterSrc: "/assets/story/peaceful-train.jpg",
+};
+
+export const aboutBackground = {
+  imageSrc: "/assets/story/peaceful-train.jpg",
+};
+
+export type InspirationalPatch = {
+  id: string;
+  src: string;
+  alt: string;
+  placement: {
+    top: string;
+    left?: string;
+    right?: string;
+  };
+  rotate: number;
+  /** Stagger order after hero exit (0 = first stamp) */
+  appearOrder: number;
+};
+
+export const inspirationalPatches: InspirationalPatch[] = [
+  {
+    id: "creativity",
+    src: "/assets/story/patch-creativity.png",
+    alt: "Creativity patch",
+    placement: { top: "16%", left: "5%" },
+    rotate: -12,
+    appearOrder: 0,
+  },
+  {
+    id: "crafty",
+    src: "/assets/story/patch-crafty.png",
+    alt: "Crafty patch",
+    placement: { top: "30%", right: "4%" },
+    rotate: 9,
+    appearOrder: 1,
+  },
+  {
+    id: "secure",
+    src: "/assets/story/patch-secure.png",
+    alt: "Secure patch",
+    placement: { top: "50%", left: "6%" },
+    rotate: -6,
+    appearOrder: 2,
+  },
+  {
+    id: "seo",
+    src: "/assets/story/patch-seo.png",
+    alt: "SEO patch",
+    placement: { top: "64%", right: "8%" },
+    rotate: 11,
+    appearOrder: 3,
+  },
+  {
+    id: "bullshite",
+    src: "/assets/story/patch-bullshite.png",
+    alt: "No bullshit patch",
+    placement: { top: "78%", left: "24%" },
+    rotate: -8,
+    appearOrder: 4,
+  },
+  {
+    id: "ww",
+    src: "/assets/story/patch-ww.png",
+    alt: "Worldwide patch",
+    placement: { top: "38%", left: "38%" },
+    rotate: 5,
+    appearOrder: 5,
+  },
+];

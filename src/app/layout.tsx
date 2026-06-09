@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans_JP, Manrope } from "next/font/google";
 import { AppIntlProvider } from "@/components/i18n/intl-provider";
-import { LavaLampBackground } from "@/components/effects/lava-lamp-background";
 import { ThemeInitScript } from "@/components/theme/theme-init-script";
+import { SmoothScrollProvider } from "@/components/scroll/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import "./globals.scss";
 
@@ -20,9 +20,9 @@ const ibmPlexSansJp = IBM_Plex_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "Vic Lab | Creative Front-End Developer",
+  title: "Vic Lab | Senior Front-End Developer",
   description:
-    "Portfolio of a creative front-end developer building product-focused and interactive digital experiences.",
+    "Senior front-end developer focused on product, performance, and maintainable interfaces. Vue, React, TypeScript.",
 };
 
 export default function RootLayout({
@@ -36,11 +36,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${manrope.variable} ${ibmPlexSansJp.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body suppressHydrationWarning className="min-h-full flex flex-col">
         <ThemeInitScript />
-        <LavaLampBackground />
         <ThemeProvider>
-          <AppIntlProvider>{children}</AppIntlProvider>
+          <SmoothScrollProvider>
+            <AppIntlProvider>{children}</AppIntlProvider>
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>

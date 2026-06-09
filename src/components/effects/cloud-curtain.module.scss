@@ -2,6 +2,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  transform-origin: center top;
+  will-change: transform, opacity, filter;
 }
 
 .curtain {
@@ -46,11 +48,11 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
-  opacity: 0.58;
+  opacity: 0.36;
   pointer-events: none;
   user-select: none;
-  filter: saturate(0.72) hue-rotate(48deg) brightness(1.06)
-    drop-shadow(0 12px 28px rgba(46, 42, 74, 0.1));
+  filter: saturate(0.08) brightness(1.01) contrast(0.92)
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
 }
 
 .panelLeft .cloudImage {
@@ -67,12 +69,12 @@
   pointer-events: none;
   background: linear-gradient(
     128deg,
-    rgba(185, 176, 245, 0.34) 0%,
-    rgba(255, 214, 232, 0.28) 42%,
-    rgba(136, 217, 198, 0.22) 100%
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.04) 42%,
+    rgba(0, 0, 0, 0.02) 100%
   );
-  opacity: 0.38;
-  mix-blend-mode: soft-light;
+  opacity: 0.2;
+  mix-blend-mode: multiply;
   -webkit-mask-image: url('/assets/picto/pastel-cloud.svg');
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
@@ -85,19 +87,19 @@
 
 :global([data-theme='dark']) {
   .cloudImage {
-    opacity: 0.5;
-    filter: saturate(0.68) hue-rotate(52deg) brightness(0.95)
-      drop-shadow(0 14px 32px rgba(8, 6, 20, 0.35));
+    opacity: 0.3;
+    filter: saturate(0.02) brightness(0.75) contrast(1.05)
+      drop-shadow(0 12px 26px rgba(0, 0, 0, 0.3));
   }
 
   .cloudGradient {
     background: linear-gradient(
       128deg,
-      rgba(175, 162, 242, 0.28) 0%,
-      rgba(243, 170, 205, 0.22) 45%,
-      rgba(130, 210, 195, 0.18) 100%
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.03) 45%,
+      rgba(255, 255, 255, 0.015) 100%
     );
-    opacity: 0.32;
+    opacity: 0.2;
     mix-blend-mode: screen;
   }
 }
@@ -115,13 +117,13 @@
   }
 
   .cloudImage {
-    opacity: 0.44;
-    filter: saturate(0.68) hue-rotate(48deg) brightness(1.04)
-      drop-shadow(0 8px 18px rgba(46, 42, 74, 0.08));
+    opacity: 0.28;
+    filter: saturate(0.05) brightness(1) contrast(0.94)
+      drop-shadow(0 8px 18px rgba(0, 0, 0, 0.08));
   }
 
   .cloudGradient {
-    opacity: 0.28;
+    opacity: 0.16;
   }
 }
 
@@ -131,6 +133,6 @@
   }
 
   .cloudImage {
-    opacity: 0.38;
+    opacity: 0.22;
   }
 }

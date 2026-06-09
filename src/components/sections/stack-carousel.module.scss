@@ -1,0 +1,17 @@
+.carousel {
+  --embla-viewport-padding: clamp(1rem, 3.5vw, 1.5rem);
+  --embla-slide-size: clamp(9.5rem, 52cqw, 12.5rem);
+  --embla-slide-spacing: 0.75rem;
+}
+
+.stackSlide article {
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    --embla-slide-size: clamp(8.5rem, 58cqw, 11.5rem);
+    --embla-slide-spacing: 0.6rem;
+  }
+}

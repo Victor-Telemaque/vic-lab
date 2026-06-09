@@ -1,0 +1,123 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.mediaVideo,
+.mediaImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mediaVideo {
+  object-fit: cover;
+  opacity: 1;
+  filter: saturate(1) contrast(1.05) brightness(1.02);
+}
+
+.backdropStack .mediaVideo {
+  opacity: 1;
+}
+
+.mediaImage {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.mediaOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.overlayProjects {
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--section-projects) 48%, transparent) 0%,
+      color-mix(in srgb, var(--section-projects-mid) 42%, transparent) 55%,
+      color-mix(
+          in srgb,
+          var(--section-projects-accent) 38%,
+          var(--section-projects)
+        )
+        100%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 22%, transparent) 0%,
+      color-mix(in srgb, var(--color-bg) 38%, transparent) 100%
+    );
+}
+
+.overlayStack {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 50%, transparent) 20%,
+      color-mix(in srgb, var(--color-bg) 86%, transparent) 42%,
+      color-mix(in srgb, var(--color-bg) 20%, transparent) 100%
+    ),
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--section-story-mid) 4%, transparent) 0%,
+      color-mix(in srgb, var(--section-projects-mid) 0%, transparent) 50%,
+      color-mix(in srgb, var(--section-contact-mid) 6%, transparent) 100%
+    );
+}
+
+.overlayAbout {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 58%, transparent) 0%,
+      color-mix(in srgb, var(--color-bg) 60%, transparent) 48%,
+      color-mix(in srgb, var(--color-bg) 94%, transparent) 100%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 8% 18%,
+      color-mix(in srgb, var(--section-about-tint-b) 18%, transparent) 0%,
+      transparent 72%
+    ),
+    radial-gradient(
+      circle at 14% 22%,
+      color-mix(in srgb, var(--section-about-tint-a) 55%, transparent) 0%,
+      transparent 48%
+    ),
+    radial-gradient(
+      circle at 82% 16%,
+      color-mix(in srgb, var(--section-about-tint-b) 55%, transparent) 0%,
+      transparent 50%
+    );
+}
+
+:global([data-theme='dark']) .mediaVideo {
+  opacity: 0.48;
+  filter: saturate(0.9) contrast(1.08) brightness(0.92);
+}
+
+:global([data-theme='dark']) .backdropStack .mediaVideo {
+  opacity: 0.28;
+  filter: saturate(0.82) contrast(1.05) brightness(0.78);
+}
+
+:global([data-theme='dark']) .overlayStack {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 10%, transparent) 0%,
+      color-mix(in srgb, var(--color-bg) 33%, transparent) 45%,
+      color-mix(in srgb, var(--color-bg) 96%, transparent) 100%
+    ),
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--section-story-mid) 32%, transparent) 0%,
+      color-mix(in srgb, var(--section-projects-mid) 26%, transparent) 100%
+    );
+}

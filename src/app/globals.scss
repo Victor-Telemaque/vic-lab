@@ -1,41 +1,73 @@
 :root {
-  --color-bg: #f4f6ff;
-  --color-surface: #fff8fc;
-  --color-surface-soft: #f4ecff;
-  --color-text: #2e2a4a;
-  --color-text-muted: #6f6a96;
-  --color-accent: #f28cbf;
-  --color-accent-alt: #88d9c6;
-  --color-border: rgba(126, 113, 175, 0.24);
-  --color-surface-glass: rgba(255, 248, 252, 0.78);
-  --color-surface-glass-strong: rgba(255, 248, 252, 0.84);
-  --color-surface-soft-overlay: rgba(255, 255, 255, 0.55);
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f7f7f7;
+  --color-text: #111111;
+  --color-text-muted: #5c5c5c;
+  --color-accent: #111111;
+  --color-accent-alt: #4b4b4b;
+  --color-border: rgba(17, 17, 17, 0.14);
+  --color-surface-glass: rgba(255, 255, 255, 0.9);
+  --color-surface-glass-strong: rgba(255, 255, 255, 0.96);
+  --color-surface-soft-overlay: rgba(255, 255, 255, 0.86);
   --font-display: var(--font-manrope), sans-serif;
   --font-jp: var(--font-ibm-plex-sans-jp), sans-serif;
-  --lava-blob-1: rgba(228, 88, 158, 0.58);
-  --lava-blob-2: rgba(58, 178, 158, 0.54);
-  --lava-blob-3: rgba(128, 108, 228, 0.56);
-  --lava-blob-4: rgba(248, 128, 188, 0.5);
-  --lava-blob-5: rgba(72, 198, 172, 0.48);
+  --lava-blob-1: rgba(247, 51, 146, 0.62);
+  --lava-blob-2: rgba(29, 212, 255, 0.54);
+  --lava-blob-3: rgba(93, 96, 255, 0.56);
+  --lava-blob-4: rgba(255, 228, 87, 0.5);
+  --lava-blob-5: rgba(255, 125, 209, 0.45);
+  --bg-pastel-a: rgba(255, 198, 225, 0.22);
+  --bg-pastel-b: rgba(184, 233, 255, 0.2);
+  --bg-pastel-c: rgba(226, 212, 255, 0.18);
+  --section-story: #fff5f9;
+  --section-story-accent: #ffc2db;
+  --section-story-mid: #ffeef5;
+  --section-projects: #fff8f2;
+  --section-projects-accent: #f2cdb5;
+  --section-projects-mid: #fff0e8;
+  --section-contact: #f7f3ff;
+  --section-contact-accent: #d5c4f5;
+  --section-contact-mid: #efe9ff;
+  --section-about-tint-a: rgba(255, 188, 218, 0.38);
+  --section-about-tint-b: rgba(255, 210, 175, 0.34);
+  --logo-stage-bg: #f4f5f8;
+  --logo-stage-border: rgba(17, 17, 17, 0.1);
 }
 
 [data-theme="dark"] {
-  --color-bg: #151428;
-  --color-surface: #211f39;
-  --color-surface-soft: #2c2948;
-  --color-text: #f2efff;
-  --color-text-muted: #b9b2d8;
-  --color-accent: #f3a4cc;
-  --color-accent-alt: #9de3d4;
-  --color-border: rgba(196, 181, 239, 0.28);
-  --color-surface-glass: rgba(37, 34, 61, 0.72);
-  --color-surface-glass-strong: rgba(34, 31, 57, 0.82);
-  --color-surface-soft-overlay: rgba(44, 41, 72, 0.6);
-  --lava-blob-1: rgba(243, 150, 200, 0.52);
-  --lava-blob-2: rgba(140, 220, 205, 0.48);
-  --lava-blob-3: rgba(175, 162, 242, 0.5);
-  --lava-blob-4: rgba(255, 155, 200, 0.42);
-  --lava-blob-5: rgba(120, 215, 195, 0.4);
+  --color-bg: #0f0f12;
+  --color-surface: #17171c;
+  --color-surface-soft: #222228;
+  --color-text: #f4f4f5;
+  --color-text-muted: #a7a7b1;
+  --color-accent: #f4f4f5;
+  --color-accent-alt: #c9c9d2;
+  --color-border: rgba(244, 244, 245, 0.14);
+  --color-surface-glass: rgba(23, 23, 28, 0.9);
+  --color-surface-glass-strong: rgba(19, 19, 24, 0.95);
+  --color-surface-soft-overlay: rgba(27, 27, 34, 0.84);
+  --lava-blob-1: rgba(255, 255, 255, 0.04);
+  --lava-blob-2: rgba(255, 255, 255, 0.03);
+  --lava-blob-3: rgba(255, 255, 255, 0.035);
+  --lava-blob-4: rgba(255, 255, 255, 0.025);
+  --lava-blob-5: rgba(255, 255, 255, 0.02);
+  --bg-pastel-a: rgba(255, 145, 198, 0.12);
+  --bg-pastel-b: rgba(126, 215, 255, 0.1);
+  --bg-pastel-c: rgba(180, 156, 255, 0.09);
+  --section-story: #342430;
+  --section-story-accent: #e88ab8;
+  --section-story-mid: #3d2a38;
+  --section-projects: #322820;
+  --section-projects-accent: #c9a080;
+  --section-projects-mid: #3a2e28;
+  --section-contact: #2a2640;
+  --section-contact-accent: #9f88d8;
+  --section-contact-mid: #322e4a;
+  --section-about-tint-a: rgba(255, 140, 190, 0.32);
+  --section-about-tint-b: rgba(220, 170, 130, 0.28);
+  --logo-stage-bg: #f0f1f5;
+  --logo-stage-border: rgba(17, 17, 17, 0.12);
 }
 
 *,
@@ -49,6 +81,28 @@ html {
   max-width: 100%;
 }
 
+html.hero-gate-active {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html.hero-gate-active body {
+  overflow: hidden;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
 html,
 body {
   margin: 0;
@@ -58,12 +112,69 @@ body {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   overflow-x: clip;
   background: transparent;
   color: var(--color-text);
   font-family: var(--font-display);
   line-height: 1.5;
   transition: color 0.25s ease;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+body::before {
+  z-index: -2;
+  background:
+    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--bg-pastel-a) 92%, transparent) 0%, transparent 44%),
+    radial-gradient(circle at 82% 14%, color-mix(in srgb, var(--bg-pastel-b) 88%, transparent) 0%, transparent 48%),
+    radial-gradient(circle at 52% 86%, color-mix(in srgb, var(--bg-pastel-c) 84%, transparent) 0%, transparent 52%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 96%, transparent) 0%,
+      color-mix(in srgb, var(--color-bg) 92%, transparent) 100%
+    );
+  opacity: 0.8;
+  animation: bodyPastelFloat 30s ease-in-out infinite alternate;
+}
+
+body::after {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 22% 32%, color-mix(in srgb, var(--bg-pastel-a) 68%, transparent) 0%, transparent 34%),
+    radial-gradient(circle at 74% 28%, color-mix(in srgb, var(--bg-pastel-b) 64%, transparent) 0%, transparent 36%);
+  animation: pastelDrift 16s ease-in-out infinite alternate;
+}
+
+@keyframes pastelDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(0, -1.8%, 0) scale(1.045);
+  }
+}
+
+@keyframes bodyPastelFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(0, -1.4%, 0) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    animation: none;
+  }
 }
 
 a {

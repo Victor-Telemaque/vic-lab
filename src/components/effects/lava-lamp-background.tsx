@@ -3,6 +3,8 @@ import styles from "./lava-lamp-background.module.scss";
 export function LavaLampBackground() {
   return (
     <div className={styles.lava} aria-hidden>
+      <span className={styles.halftoneMask} />
+      <span className={styles.diagonalGrid} />
       <span className={`${styles.blob} ${styles.blobOne}`} />
       <span className={`${styles.blob} ${styles.blobTwo}`} />
       <span className={`${styles.blob} ${styles.blobThree}`} />

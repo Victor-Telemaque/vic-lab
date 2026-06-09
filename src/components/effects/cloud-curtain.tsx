@@ -10,106 +10,81 @@ import {
   useTransform,
   type MotionValue,
 } from 'framer-motion';
-import { useMediaQuery } from '@/hooks/use-media-query';
+import { createCloudStageReveal } from '@/components/motion/section-variants';
 import styles from './cloud-curtain.module.scss';
 
 type CloudCurtainSectionProps = {
   id?: string;
   children: React.ReactNode;
+  isRevealed?: boolean;
+  revealDelay?: number;
 };
 
 const CLOUD_SRC = '/assets/picto/pastel-cloud.svg';
 
-const DESKTOP_OFFSETS = {
-  scroll: ['start 0.92', 'end 0.08'] as const,
-  opacity: {
-    input: [0.05, 0.14, 0.22, 0.72, 0.86, 0.96],
-    output: [0, 0, 1, 1, 0, 0] as number[],
-  },
-  leftX: {
-    input: [0.12, 0.38, 0.52, 0.68, 0.86],
-    output: ['24vw', '18vw', '-48vw', '-16vw', '24vw'] as string[],
-  },
-  rightX: {
-    input: [0.12, 0.38, 0.52, 0.68, 0.86],
-    output: ['-24vw', '-18vw', '48vw', '16vw', '-24vw'] as string[],
-  },
-  openLeft: '-48vw',
-  openRight: '48vw',
-};
-
-const MOBILE_OFFSETS = {
-  scroll: ['start 0.96', 'end 0.06'] as const,
-  opacity: {
-    input: [0.06, 0.16, 0.26, 0.7, 0.84, 0.94],
-    output: [0, 0, 1, 1, 0, 0] as number[],
-  },
-  leftX: {
-    input: [0.14, 0.4, 0.54, 0.7, 0.88],
-    output: ['12vw', '10vw', '-34vw', '-8vw', '12vw'] as string[],
-  },
-  rightX: {
-    input: [0.14, 0.4, 0.54, 0.7, 0.88],
-    output: ['-12vw', '-10vw', '34vw', '8vw', '-12vw'] as string[],
-  },
-  openLeft: '-34vw',
-  openRight: '34vw',
-};
-
 export function CloudCurtainSection({
   id,
   children,
+  isRevealed = false,
+  revealDelay = 0.38,
 }: CloudCurtainSectionProps) {
   const stageRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  const isMobile = useMediaQuery('(max-width: 768px)');
-  const motionConfig = isMobile ? MOBILE_OFFSETS : DESKTOP_OFFSETS;
+  const stageVariants = createCloudStageReveal(revealDelay);
 
   const { scrollYProgress } = useScroll({
     target: stageRef,
-    offset: [...motionConfig.scroll],
+    offset: ['start end', 'end start'],
   });
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: isMobile ? 50 : 42,
-    damping: isMobile ? 30 : 28,
-    mass: isMobile ? 0.75 : 0.7,
+    stiffness: 48,
+    damping: 32,
+    mass: 0.62,
   });
 
   const curtainOpacity = useTransform(
     smoothProgress,
-    motionConfig.opacity.input,
-    motionConfig.opacity.output,
+    [0, 0.08, 0.22, 0.78, 0.92, 1],
+    [0, 0, 1, 1, 0, 0],
   );
   const leftX = useTransform(
     smoothProgress,
-    motionConfig.leftX.input,
-    motionConfig.leftX.output,
+    [0.06, 0.34, 0.7],
+    ['0vw', '-10vw', '-48vw'],
   );
   const rightX = useTransform(
     smoothProgress,
-    motionConfig.rightX.input,
-    motionConfig.rightX.output,
+    [0.06, 0.34, 0.7],
+    ['0vw', '10vw', '48vw'],
   );
 
+  if (shouldReduceMotion) {
+    return (
+      <section ref={stageRef} id={id} className={styles.stage}>
+        <div className={styles.content}>{children}</div>
+      </section>
+    );
+  }
+
   return (
-    <section ref={stageRef} id={id} className={styles.stage}>
+    <motion.section
+      ref={stageRef}
+      id={id}
+      className={styles.stage}
+      initial="hidden"
+      animate={isRevealed ? 'show' : 'hidden'}
+      variants={stageVariants}
+    >
       <motion.div
         className={styles.curtain}
         aria-hidden
-        style={{ opacity: shouldReduceMotion ? 0 : curtainOpacity }}
+        style={{ opacity: curtainOpacity }}
       >
-        <CloudPanel
-          className={styles.panelLeft}
-          x={shouldReduceMotion ? motionConfig.openLeft : leftX}
-        />
-        <CloudPanel
-          className={styles.panelRight}
-          x={shouldReduceMotion ? motionConfig.openRight : rightX}
-          mirrored
-        />
+        <CloudPanel className={styles.panelLeft} x={leftX} />
+        <CloudPanel className={styles.panelRight} x={rightX} mirrored />
       </motion.div>
       <div className={styles.content}>{children}</div>
-    </section>
+    </motion.section>
   );
 }
 
