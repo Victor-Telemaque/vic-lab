@@ -18,10 +18,9 @@ import {
   type PatchLayoutEntry,
   type PatchLayoutState,
 } from "@/hooks/use-patch-layout";
+import { useScrollPatchReveal } from "@/hooks/use-scroll-patch-reveal";
 import styles from "./inspirational-stamp-layer.module.scss";
 
-const STAMP_STAGGER_MS = 2600;
-const STAMP_START_DELAY_MS = 700;
 const STAMP_SIZE_FALLBACK = 400;
 
 type Props = {
@@ -53,7 +52,13 @@ export function InspirationalStampLayer({ isRevealed = false }: Props) {
   const layerRef = useRef<HTMLDivElement>(null);
   const peelZoneRef = useRef<HTMLDivElement>(null);
   const { layout, isReady, updatePatch, setInitialLayout } = usePatchLayout();
-  const [placedIds, setPlacedIds] = useState<Set<string>>(new Set());
+  const placedIds = useScrollPatchReveal({
+    enabled: isRevealed,
+    isReady,
+    layout,
+    updatePatch,
+    shouldReduceMotion,
+  });
   const [isDragging, setIsDragging] = useState(false);
   const [activeDragId, setActiveDragId] = useState<string | null>(null);
   const computeInitialLayout = useCallback((): PatchLayoutState => {
@@ -108,30 +113,6 @@ export function InspirationalStampLayer({ isRevealed = false }: Props) {
       observer.disconnect();
     };
   }, [computeInitialLayout, isReady, setInitialLayout]);
-
-  useEffect(() => {
-    if (!isRevealed) {
-      return;
-    }
-
-    if (shouldReduceMotion) {
-      setPlacedIds(new Set(inspirationalPatches.map((patch) => patch.id)));
-      return;
-    }
-
-    const timers = inspirationalPatches.map((patch) =>
-      window.setTimeout(
-        () => {
-          setPlacedIds((current) => new Set(current).add(patch.id));
-        },
-        STAMP_START_DELAY_MS + patch.appearOrder * STAMP_STAGGER_MS,
-      ),
-    );
-
-    return () => {
-      timers.forEach((timer) => window.clearTimeout(timer));
-    };
-  }, [isRevealed, shouldReduceMotion]);
 
   const handleDragEnd = useCallback(
     (patchId: string, entry: PatchLayoutEntry, info: PanInfo) => {

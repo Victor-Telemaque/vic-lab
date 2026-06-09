@@ -33,6 +33,8 @@
   --section-about-tint-b: rgba(255, 210, 175, 0.34);
   --logo-stage-bg: #f4f5f8;
   --logo-stage-border: rgba(17, 17, 17, 0.1);
+  --page-gutter: clamp(0.75rem, 4vw, 1.5rem);
+  --page-max-width: 1000px;
 }
 
 [data-theme="dark"] {

@@ -8,15 +8,14 @@
 .page {
   position: relative;
   z-index: 15;
-  width: min(1000px, calc(100% - 3rem));
+  width: min(var(--page-max-width), calc(100% - var(--page-gutter) * 2));
   max-width: 100%;
   min-width: 0;
   margin: 0 auto;
-  padding: 0 0 4.5rem;
+  padding: 3rem var(--page-gutter) 4.5rem;
   overflow-x: clip;
   display: grid;
   gap: 3.4rem;
-  padding-top: 3rem;
 }
 
 .sectionShell {
@@ -226,11 +225,13 @@
     152deg,
     var(--section-story) 0%,
     var(--section-story-mid) 52%,
-    color-mix(in srgb, var(--section-story-accent) 18%, var(--section-story)) 100%
+    color-mix(in srgb, var(--section-story-accent) 18%, var(--section-story))
+      100%
   );
   box-shadow:
     0 12px 28px color-mix(in srgb, var(--section-story-accent) 10%, transparent),
-    inset 0 0 0 1px color-mix(in srgb, var(--section-story-accent) 14%, transparent);
+    inset 0 0 0 1px
+      color-mix(in srgb, var(--section-story-accent) 14%, transparent);
   width: 100%;
   justify-self: stretch;
 }
@@ -246,7 +247,8 @@
   right: -16%;
   border-radius: 58% 42% 48% 52% / 42% 58% 38% 62%;
   background: color-mix(in srgb, var(--section-story-accent) 22%, transparent);
-  border: 1px solid color-mix(in srgb, var(--section-story-accent) 26%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--section-story-accent) 26%, transparent);
 }
 
 .storyStrip::after {
@@ -259,7 +261,8 @@
   bottom: -28%;
   left: -10%;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--section-story-accent) 30%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--section-story-accent) 30%, transparent);
   background: color-mix(in srgb, var(--section-story-accent) 8%, transparent);
 }
 
@@ -375,7 +378,11 @@
   font-size: 0.8rem;
   border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
   color: var(--color-text-muted);
-  background: color-mix(in srgb, var(--color-bg) 60%, var(--color-surface-soft));
+  background: color-mix(
+    in srgb,
+    var(--color-bg) 60%,
+    var(--color-surface-soft)
+  );
 }
 
 .expertisePanel {
@@ -383,11 +390,13 @@
     148deg,
     var(--section-story) 0%,
     var(--section-story-mid) 58%,
-    color-mix(in srgb, var(--section-story-accent) 14%, var(--section-story)) 100%
+    color-mix(in srgb, var(--section-story-accent) 14%, var(--section-story))
+      100%
   );
   box-shadow:
     0 12px 26px color-mix(in srgb, var(--section-story-accent) 10%, transparent),
-    inset 0 0 0 1px color-mix(in srgb, var(--section-story-accent) 14%, transparent);
+    inset 0 0 0 1px
+      color-mix(in srgb, var(--section-story-accent) 14%, transparent);
   backdrop-filter: none;
 }
 
@@ -396,11 +405,18 @@
     152deg,
     var(--section-projects) 0%,
     var(--section-projects-mid) 55%,
-    color-mix(in srgb, var(--section-projects-accent) 14%, var(--section-projects)) 100%
+    color-mix(
+        in srgb,
+        var(--section-projects-accent) 14%,
+        var(--section-projects)
+      )
+      100%
   );
   box-shadow:
-    0 12px 26px color-mix(in srgb, var(--section-projects-accent) 10%, transparent),
-    inset 0 0 0 1px color-mix(in srgb, var(--section-projects-accent) 14%, transparent);
+    0 12px 26px
+      color-mix(in srgb, var(--section-projects-accent) 10%, transparent),
+    inset 0 0 0 1px
+      color-mix(in srgb, var(--section-projects-accent) 14%, transparent);
   backdrop-filter: none;
 }
 
@@ -409,11 +425,18 @@
     160deg,
     var(--section-contact) 0%,
     var(--section-contact-mid) 52%,
-    color-mix(in srgb, var(--section-contact-accent) 16%, var(--section-contact)) 100%
+    color-mix(
+        in srgb,
+        var(--section-contact-accent) 16%,
+        var(--section-contact)
+      )
+      100%
   );
   box-shadow:
-    0 12px 26px color-mix(in srgb, var(--section-contact-accent) 10%, transparent),
-    inset 0 0 0 1px color-mix(in srgb, var(--section-contact-accent) 14%, transparent);
+    0 12px 26px
+      color-mix(in srgb, var(--section-contact-accent) 10%, transparent),
+    inset 0 0 0 1px
+      color-mix(in srgb, var(--section-contact-accent) 14%, transparent);
   backdrop-filter: none;
 }
 
@@ -522,11 +545,18 @@
     145deg,
     var(--section-projects) 0%,
     var(--section-projects-mid) 55%,
-    color-mix(in srgb, var(--section-projects-accent) 16%, var(--section-projects)) 100%
+    color-mix(
+        in srgb,
+        var(--section-projects-accent) 16%,
+        var(--section-projects)
+      )
+      100%
   );
   box-shadow:
-    0 12px 26px color-mix(in srgb, var(--section-projects-accent) 10%, transparent),
-    inset 0 0 0 1px color-mix(in srgb, var(--section-projects-accent) 14%, transparent);
+    0 12px 26px
+      color-mix(in srgb, var(--section-projects-accent) 10%, transparent),
+    inset 0 0 0 1px
+      color-mix(in srgb, var(--section-projects-accent) 14%, transparent);
 }
 
 .projectsPanel::before {
@@ -539,8 +569,13 @@
   bottom: -36%;
   left: -12%;
   border-radius: 46% 54% 42% 58% / 58% 42% 56% 44%;
-  background: color-mix(in srgb, var(--section-projects-accent) 20%, transparent);
-  border: 1px solid color-mix(in srgb, var(--section-projects-accent) 24%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--section-projects-accent) 20%,
+    transparent
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--section-projects-accent) 24%, transparent);
 }
 
 .projectsPanel::after {
@@ -554,9 +589,14 @@
   top: 10%;
   right: 5%;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--section-projects-accent) 32%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--section-projects-accent) 32%, transparent);
   transform: rotate(-8deg);
-  background: color-mix(in srgb, var(--section-projects-accent) 6%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--section-projects-accent) 6%,
+    transparent
+  );
 }
 
 .sectionHeading span {
@@ -625,7 +665,7 @@
 .tagList {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 1rem 0.15rem 0.15rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -670,11 +710,14 @@
   bottom: -42%;
   right: -16%;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--section-about-tint-a) 38%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--section-about-tint-a) 38%, transparent);
   background: transparent;
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--section-about-tint-b) 28%, transparent),
-    -4.5rem -2rem 0 -3.2rem color-mix(in srgb, var(--section-about-tint-b) 14%, transparent);
+    inset 0 0 0 1px
+      color-mix(in srgb, var(--section-about-tint-b) 28%, transparent),
+    -4.5rem -2rem 0 -3.2rem
+      color-mix(in srgb, var(--section-about-tint-b) 14%, transparent);
 }
 
 .about > *:not([aria-hidden]) {
@@ -728,11 +771,18 @@
     160deg,
     var(--section-contact) 0%,
     var(--section-contact-mid) 52%,
-    color-mix(in srgb, var(--section-contact-accent) 18%, var(--section-contact)) 100%
+    color-mix(
+        in srgb,
+        var(--section-contact-accent) 18%,
+        var(--section-contact)
+      )
+      100%
   );
   box-shadow:
-    0 12px 26px color-mix(in srgb, var(--section-contact-accent) 10%, transparent),
-    inset 0 0 0 1px color-mix(in srgb, var(--section-contact-accent) 14%, transparent);
+    0 12px 26px
+      color-mix(in srgb, var(--section-contact-accent) 10%, transparent),
+    inset 0 0 0 1px
+      color-mix(in srgb, var(--section-contact-accent) 14%, transparent);
   backdrop-filter: none;
 }
 
@@ -746,8 +796,13 @@
   top: -38%;
   left: -14%;
   border-radius: 52% 48% 44% 56% / 44% 56% 48% 52%;
-  background: color-mix(in srgb, var(--section-contact-accent) 18%, transparent);
-  border: 1px solid color-mix(in srgb, var(--section-contact-accent) 24%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--section-contact-accent) 18%,
+    transparent
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--section-contact-accent) 24%, transparent);
 }
 
 .contact.contentPanel::after {
@@ -761,7 +816,8 @@
   bottom: 12%;
   right: 4%;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--section-contact-accent) 28%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--section-contact-accent) 28%, transparent);
   transform: rotate(6deg);
   background: color-mix(in srgb, var(--section-contact-accent) 6%, transparent);
 }
@@ -815,7 +871,7 @@
   .page {
     width: 100%;
     max-width: 100%;
-    padding: 1.4rem 1rem 4rem;
+    padding: 1.4rem var(--page-gutter) 4rem;
     gap: 2.6rem;
     overflow-x: clip;
   }
@@ -850,6 +906,7 @@
     width: 100%;
     max-width: 100%;
     flex: none;
+    min-height: 2.75rem;
     padding: 0.62rem 1rem;
     font-size: 0.9rem;
   }
@@ -912,7 +969,7 @@
 
 @media (max-width: 520px) {
   .page {
-    padding: 1.2rem 0.75rem 3.5rem;
+    padding: 1.2rem var(--page-gutter) 3.5rem;
   }
 
   .sectionShell {
@@ -937,8 +994,13 @@
 
   .primaryAction,
   .secondaryAction {
+    min-height: 2.75rem;
     padding: 0.56rem 0.9rem;
     font-size: 0.86rem;
+  }
+
+  .contactCta {
+    min-height: 2.75rem;
   }
 
   .skills li {

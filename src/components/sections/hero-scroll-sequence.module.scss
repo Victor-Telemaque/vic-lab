@@ -57,7 +57,8 @@
   justify-items: center;
   gap: 0.35rem;
   margin: 0;
-  padding: 0.45rem 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.9rem;
   border: none;
   background: none;
   cursor: pointer;
@@ -245,14 +246,26 @@
   }
 }
 
+@media (max-width: 768px) {
+  .inner {
+    padding-top: 4.25rem;
+    padding-inline: var(--page-gutter);
+  }
+}
+
 @media (max-width: 520px) {
   .inner {
-    width: min(820px, calc(100% - 1.2rem));
+    width: min(820px, calc(100% - var(--page-gutter) * 2));
     padding-top: 4.5rem;
   }
 
   .lead {
     font-size: 0.9rem;
+  }
+
+  .scrollHint {
+    min-height: 2.75rem;
+    padding: 0.6rem 1rem;
   }
 }
 

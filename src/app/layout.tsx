@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans_JP, Manrope } from "next/font/google";
 import { AppIntlProvider } from "@/components/i18n/intl-provider";
 import { ThemeInitScript } from "@/components/theme/theme-init-script";
@@ -23,6 +23,12 @@ export const metadata: Metadata = {
   title: "Vic Lab | Senior Front-End Developer",
   description:
     "Senior front-end developer focused on product, performance, and maintainable interfaces. Vue, React, TypeScript.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

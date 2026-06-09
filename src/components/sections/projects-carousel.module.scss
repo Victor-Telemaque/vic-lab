@@ -5,7 +5,7 @@
 
 .carousel {
   --embla-viewport-padding: clamp(1.1rem, 4.5vw, 2rem);
-  --embla-slide-size: clamp(16rem, 72cqw, 22rem);
+  --embla-slide-size: clamp(16rem, 72cqi, 22rem);
   --embla-slide-spacing: 1rem;
 }
 
@@ -43,20 +43,43 @@
   color: var(--color-text-muted);
 }
 
-.detailsPanel {
+.cardAction {
+  display: grid;
+  gap: 0.8rem;
+  width: 100%;
   margin: 0;
-  padding: 0.85rem 1rem 1rem;
-  border-radius: 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
-  background: color-mix(in srgb, var(--color-bg) 55%, var(--color-surface-soft));
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: default;
 }
 
-.detailsBody {
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.6;
+.cardActionActive {
+  cursor: pointer;
+}
+
+.cardActionActive:hover .readMore {
+  color: var(--color-text);
+  border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+}
+
+.readMore {
+  justify-self: start;
+  margin-top: 0.1rem;
+  min-height: 2rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
-  white-space: pre-line;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .stackLogo {
@@ -82,7 +105,7 @@
 @media (max-width: 768px) {
   .carousel {
     --embla-viewport-padding: 1rem;
-    --embla-slide-size: clamp(14rem, 76cqw, 18rem);
+    --embla-slide-size: clamp(14rem, 76cqi, 18rem);
     --embla-slide-spacing: 0.8rem;
   }
 }
@@ -90,7 +113,7 @@
 @media (max-width: 520px) {
   .carousel {
     --embla-viewport-padding: 0.85rem;
-    --embla-slide-size: clamp(13rem, 80cqw, 16.5rem);
+    --embla-slide-size: clamp(13rem, 82cqi, 16.5rem);
     --embla-slide-spacing: 0.65rem;
   }
 }

@@ -1,18 +1,20 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useState } from "react";
-import type { PartnerProject } from "@/data/portfolio-content";
-import type { Locale } from "@/i18n/messages";
-import { EmblaCarousel } from "@/components/sections/embla-carousel";
-import cardStyles from "./portfolio-home.module.scss";
-import styles from "./projects-carousel.module.scss";
+import Image from 'next/image';
+import { useCallback, useState } from 'react';
+import { useIntl } from 'react-intl';
+import type { PartnerProject } from '@/data/portfolio-content';
+import type { Locale } from '@/i18n/messages';
+import { EmblaCarousel } from '@/components/sections/embla-carousel';
+import { ProjectDetailsModal } from '@/components/sections/project-details-modal';
+import cardStyles from './portfolio-home.module.scss';
+import styles from './projects-carousel.module.scss';
 
 const projectLabels = {
-  nav: "projects.carousel.label",
-  prev: "projects.carousel.prev",
-  next: "projects.carousel.next",
-  hint: "projects.carousel.hint",
+  nav: 'projects.carousel.label',
+  prev: 'projects.carousel.prev',
+  next: 'projects.carousel.next',
+  hint: 'projects.carousel.hint',
 } as const;
 
 type Props = {
@@ -23,8 +25,15 @@ type Props = {
 
 export function ProjectsCarousel({ projects, locale, className }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeProject = projects[activeIndex];
-  const activeDetails = activeProject?.details?.[locale];
+  const [modalProject, setModalProject] = useState<PartnerProject | null>(null);
+
+  const openProject = useCallback((project: PartnerProject) => {
+    setModalProject(project);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setModalProject(null);
+  }, []);
 
   return (
     <div className={`${styles.wrapper} ${className ?? ""}`.trim()}>
@@ -36,16 +45,21 @@ export function ProjectsCarousel({ projects, locale, className }: Props) {
         className={styles.carousel}
         slideClassName={styles.projectSlide}
         onSlideChange={setActiveIndex}
-        renderSlide={(project) => (
-          <PartnerCardContent project={project} locale={locale} />
+        renderSlide={(project, index) => (
+          <PartnerCardContent
+            project={project}
+            locale={locale}
+            isActive={index === activeIndex}
+            onOpen={() => openProject(project)}
+          />
         )}
       />
 
-      {activeDetails ? (
-        <div className={styles.detailsPanel} key={activeProject.id}>
-          <p className={styles.detailsBody}>{activeDetails}</p>
-        </div>
-      ) : null}
+      <ProjectDetailsModal
+        project={modalProject}
+        locale={locale}
+        onClose={closeModal}
+      />
     </div>
   );
 }
@@ -53,21 +67,53 @@ export function ProjectsCarousel({ projects, locale, className }: Props) {
 function PartnerCardContent({
   project,
   locale,
+  isActive,
+  onOpen,
 }: {
   project: PartnerProject;
   locale: Locale;
+  isActive: boolean;
+  onOpen: () => void;
 }) {
+  const intl = useIntl();
+  const hasDetails = Boolean(project.details?.[locale]);
+
   return (
-    <>
+    <div
+      role="button"
+      tabIndex={isActive ? 0 : -1}
+      className={`${styles.cardAction} ${isActive ? styles.cardActionActive : ''}`.trim()}
+      onClick={() => {
+        if (isActive) {
+          onOpen();
+        }
+      }}
+      onKeyDown={(event) => {
+        if (!isActive) {
+          return;
+        }
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onOpen();
+        }
+      }}
+      aria-haspopup="dialog"
+      aria-disabled={!isActive}
+      aria-label={
+        hasDetails
+          ? `${project.name} — ${intl.formatMessage({ id: 'projects.readMore' })}`
+          : `${project.name} — ${project.summary[locale]}`
+      }
+    >
       <div className={styles.partnerLogo}>
         <Image
           src={project.logoSrc}
-          alt={project.name}
+          alt=""
           width={200}
           height={72}
           unoptimized
           className={`${styles.partnerLogoImage} ${
-            project.logoVariant === "wide" ? styles.partnerLogoImageWide : ""
+            project.logoVariant === 'wide' ? styles.partnerLogoImageWide : ''
           }`.trim()}
         />
       </div>
@@ -79,6 +125,11 @@ function PartnerCardContent({
           <li key={tag}>{tag}</li>
         ))}
       </ul>
-    </>
+      {hasDetails ? (
+        <span className={styles.readMore}>
+          {intl.formatMessage({ id: 'projects.readMore' })}
+        </span>
+      ) : null}
+    </div>
   );
 }
