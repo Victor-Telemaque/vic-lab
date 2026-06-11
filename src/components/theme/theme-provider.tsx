@@ -16,6 +16,10 @@ type Props = {
   children: React.ReactNode;
 };
 
+function readThemeFromDocument(): Theme {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
+
 function readStoredTheme(): Theme {
   const savedTheme = window.localStorage.getItem("portfolio-theme");
   if (savedTheme === "light" || savedTheme === "dark") {
@@ -26,11 +30,13 @@ function readStoredTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: Props) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof document === "undefined") {
+      return "light";
+    }
 
-  useEffect(() => {
-    setTheme(readStoredTheme());
-  }, []);
+    return readThemeFromDocument();
+  });
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;

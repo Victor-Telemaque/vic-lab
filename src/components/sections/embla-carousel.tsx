@@ -33,6 +33,7 @@ type Props<T> = {
   slideClassName?: string;
   options?: EmblaOptionsType;
   onSlideChange?: (index: number) => void;
+  dotsVariant?: 'default' | 'compact';
 };
 
 export function EmblaCarousel<T>({
@@ -45,6 +46,7 @@ export function EmblaCarousel<T>({
   slideClassName,
   options,
   onSlideChange,
+  dotsVariant = 'default',
 }: Props<T>) {
   const intl = useIntl();
   const shouldReduceMotion = useReducedMotion();
@@ -69,6 +71,8 @@ export function EmblaCarousel<T>({
   const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions);
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const lastEdgeGapRef = useRef<number | null>(null);
+  const dotsRef = useRef<HTMLDivElement>(null);
+  const isCompactDots = dotsVariant === 'compact';
 
   const setViewportRef = useCallback(
     (node: HTMLDivElement | null) => {
@@ -180,6 +184,20 @@ export function EmblaCarousel<T>({
     return () => resizeObserver.disconnect();
   }, [emblaApi, items.length, syncEdgeGaps]);
 
+  useEffect(() => {
+    if (!isCompactDots) {
+      return;
+    }
+
+    const dots = dotsRef.current;
+    const activeDot = dots?.querySelector<HTMLElement>('[aria-selected="true"]');
+    activeDot?.scrollIntoView({
+      inline: 'center',
+      block: 'nearest',
+      behavior: shouldReduceMotion ? 'auto' : 'smooth',
+    });
+  }, [isCompactDots, selectedIndex, shouldReduceMotion]);
+
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
   const scrollTo = useCallback(
@@ -221,7 +239,9 @@ export function EmblaCarousel<T>({
         </div>
       </div>
 
-      <div className={styles.controls}>
+      <div
+        className={`${styles.controls} ${isCompactDots ? styles.controlsCompact : ''}`.trim()}
+      >
         <button
           type="button"
           className={styles.navButton}
@@ -233,7 +253,8 @@ export function EmblaCarousel<T>({
         </button>
 
         <div
-          className={styles.dots}
+          ref={dotsRef}
+          className={`${styles.dots} ${isCompactDots ? styles.dotsCompact : ''}`.trim()}
           role="tablist"
           aria-label={intl.formatMessage({ id: labels.nav })}
         >

@@ -27,6 +27,7 @@ export function StackCarousel({ logos, className }: Props) {
       labels={stackLabels}
       className={`${stackStyles.carousel} ${className ?? ''}`.trim()}
       slideClassName={stackStyles.stackSlide}
+      dotsVariant="compact"
       renderSlide={(logo) => <StackCardContent logo={logo} />}
     />
   );

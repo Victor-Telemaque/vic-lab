@@ -64,5 +64,9 @@
   "language.en": "EN",
   "theme.toggleLabel": "Changer de thème",
   "theme.light": "Light",
-  "theme.dark": "Dark"
+  "theme.dark": "Dark",
+
+  "siteControls.toggleLabel": "Langue et thème",
+  "siteControls.panelLabel": "Langue et thème",
+  "siteControls.collapse": "Fermer les réglages"
 }

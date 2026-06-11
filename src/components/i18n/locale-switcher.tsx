@@ -7,7 +7,11 @@ import styles from "./locale-switcher.module.scss";
 
 const supportedLocales: Locale[] = ["fr", "en"];
 
-export function LocaleSwitcher() {
+type Props = {
+  onLocaleChange?: () => void;
+};
+
+export function LocaleSwitcher({ onLocaleChange }: Props) {
   const intl = useIntl();
   const { locale, setLocale } = useAppLocale();
 
@@ -18,7 +22,10 @@ export function LocaleSwitcher() {
           key={value}
           type="button"
           className={value === locale ? styles.active : styles.button}
-          onClick={() => setLocale(value)}
+          onClick={() => {
+            setLocale(value);
+            onLocaleChange?.();
+          }}
         >
           {intl.formatMessage({ id: `language.${value}` })}
         </button>

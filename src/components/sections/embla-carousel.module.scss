@@ -133,10 +133,47 @@
   }
 }
 
+.controlsCompact {
+  gap: 0.4rem;
+}
+
 .dots {
   display: flex;
   align-items: center;
   gap: 0.45rem;
+}
+
+.dotsCompact {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: calc(100% - 6rem);
+  flex-wrap: nowrap;
+  gap: 0.2rem;
+  padding-inline: 0.15rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x proximity;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dot {
+    flex: 0 0 auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    scroll-snap-align: center;
+
+    &::after {
+      width: 0.42rem;
+      height: 0.42rem;
+    }
+  }
+
+  .dotActive::after {
+    width: 0.95rem;
+  }
 }
 
 .dot {
@@ -209,6 +246,20 @@
   .dot {
     width: 2.75rem;
     height: 2.75rem;
+  }
+
+  .dotsCompact {
+    max-width: calc(100% - 6.25rem);
+    gap: 0.15rem;
+
+    .dot {
+      width: 1.35rem;
+      height: 1.35rem;
+    }
+
+    .dotActive::after {
+      width: 0.85rem;
+    }
   }
 
   .slideSelected article {

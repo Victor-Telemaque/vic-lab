@@ -10,7 +10,11 @@ const themeOptions = [
   { value: "dark" },
 ] as const;
 
-export function ThemeSwitcher() {
+type Props = {
+  onThemeChange?: () => void;
+};
+
+export function ThemeSwitcher({ onThemeChange }: Props) {
   const intl = useIntl();
   const { theme, setTheme } = useAppTheme();
 
@@ -25,7 +29,10 @@ export function ThemeSwitcher() {
           key={option.value}
           type="button"
           className={theme === option.value ? styles.active : styles.button}
-          onClick={() => setTheme(option.value)}
+          onClick={() => {
+            setTheme(option.value);
+            onThemeChange?.();
+          }}
           aria-label={
             option.value === "light"
               ? intl.formatMessage({ id: "theme.light" })

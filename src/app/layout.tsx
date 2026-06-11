@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans_JP, Manrope } from "next/font/google";
 import { AppIntlProvider } from "@/components/i18n/intl-provider";
+import { HeroGateInitScript } from "@/components/theme/hero-gate-init-script";
 import { ThemeInitScript } from "@/components/theme/theme-init-script";
 import { SmoothScrollProvider } from "@/components/scroll/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/theme/theme-provider";
@@ -44,6 +45,7 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         <ThemeInitScript />
+        <HeroGateInitScript />
         <ThemeProvider>
           <SmoothScrollProvider>
             <AppIntlProvider>{children}</AppIntlProvider>

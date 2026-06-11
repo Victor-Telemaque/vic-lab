@@ -64,5 +64,9 @@
   "language.en": "EN",
   "theme.toggleLabel": "Toggle theme",
   "theme.light": "Light",
-  "theme.dark": "Dark"
+  "theme.dark": "Dark",
+
+  "siteControls.toggleLabel": "Language and theme",
+  "siteControls.panelLabel": "Language and theme",
+  "siteControls.collapse": "Close settings"
 }
