@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/seo/json-ld";
-import { isSiteLocale, siteLocales, type SiteLocale } from "@/lib/site-config";
+import { isSiteLocale, siteConfig, siteLocales, type SiteLocale } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 type Props = {
@@ -32,6 +32,12 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <>
+      <link
+        rel="preload"
+        as="image"
+        href={siteConfig.heroPoster}
+        fetchPriority="high"
+      />
       <JsonLd locale={locale as SiteLocale} />
       {children}
     </>

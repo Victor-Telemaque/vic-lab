@@ -32,6 +32,8 @@ function HeroVideoBackdrop({
           muted
           playsInline
           preload="metadata"
+          // @ts-expect-error fetchPriority is valid on video in modern browsers
+          fetchPriority="low"
           style={{ opacity: videoOpacity }}
         />
       ) : (

@@ -108,7 +108,7 @@ function PartnerCardContent({
       <div className={styles.partnerLogo}>
         <Image
           src={project.logoSrc}
-          alt=""
+          alt={project.name}
           width={200}
           height={72}
           unoptimized

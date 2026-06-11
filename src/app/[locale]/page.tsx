@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { AppIntlProvider } from "@/components/i18n/intl-provider";
 import { PortfolioHome } from "@/components/sections/portfolio-home";
+import { ProjectsIndex } from "@/components/sections/projects-index";
 import { isSiteLocale, type SiteLocale } from "@/lib/site-config";
 
 type Props = {
@@ -16,7 +17,7 @@ export default async function LocaleHomePage({ params }: Props) {
 
   return (
     <AppIntlProvider initialLocale={locale as SiteLocale}>
-      <PortfolioHome />
+      <PortfolioHome projectsIndex={<ProjectsIndex locale={locale as SiteLocale} />} />
     </AppIntlProvider>
   );
 }

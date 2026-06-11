@@ -46,7 +46,9 @@ export function SectionMediaBackdrop({
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="none"
+          // @ts-expect-error fetchPriority is valid on video in modern browsers
+          fetchPriority="low"
         />
       ) : fallbackImage ? (
         <div

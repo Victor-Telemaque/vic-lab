@@ -88,6 +88,10 @@ export const partnerProjects: PartnerProject[] = [
       fr: "Cartes interactives et widgets géographiques intégrés dans des applications web.",
       en: "Interactive maps and geographic widgets embedded in web applications.",
     },
+    details: {
+      fr: "Intégration de cartes interactives et widgets géographiques ArcGIS dans des applications métier : visualisation de données territoriales, couches cartographiques et composants embarqués.",
+      en: "Integration of interactive ArcGIS maps and geographic widgets in business applications: territorial data visualization, map layers, and embedded components.",
+    },
     tags: ["ArcGIS API", "Maps", "Integration"],
   },
 ];

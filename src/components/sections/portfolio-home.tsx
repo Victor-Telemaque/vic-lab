@@ -32,7 +32,11 @@ import {
 } from "@/data/portfolio-content";
 import styles from "./portfolio-home.module.scss";
 
-export function PortfolioHome() {
+type Props = {
+  projectsIndex?: React.ReactNode;
+};
+
+export function PortfolioHome({ projectsIndex }: Props) {
   const intl = useIntl();
   const { locale } = useAppLocale();
   const shouldReduceMotion = useReducedMotion();
@@ -140,6 +144,7 @@ export function PortfolioHome() {
             </motion.p>
             <motion.div className={styles.projectGrid} variants={sectionRevealItem}>
               <ProjectsCarousel projects={partnerProjects} locale={locale} />
+              {projectsIndex}
             </motion.div>
           </SectionReveal>
         </CloudCurtainSection>

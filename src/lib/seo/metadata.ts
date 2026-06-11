@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   defaultSiteLocale,
+  getGoogleSiteVerification,
   seoContent,
   siteConfig,
   type SiteLocale,
@@ -10,6 +11,7 @@ export function buildPageMetadata(locale: SiteLocale): Metadata {
   const content = seoContent[locale];
   const alternateLocale: SiteLocale = locale === "fr" ? "en" : "fr";
   const canonical = `/${locale}`;
+  const googleVerification = getGoogleSiteVerification();
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -65,5 +67,17 @@ export function buildPageMetadata(locale: SiteLocale): Metadata {
       apple: siteConfig.appleIcon,
     },
     category: "technology",
+    ...(googleVerification
+      ? {
+          verification: {
+            google: googleVerification,
+          },
+        }
+      : {}),
+    other: {
+      "geo.region": siteConfig.location.geoRegion,
+      "geo.placename": siteConfig.location.region,
+      "geo.country": siteConfig.location.countryCode,
+    },
   };
 }

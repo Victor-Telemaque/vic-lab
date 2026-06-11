@@ -81,6 +81,89 @@
   filter: none;
 }
 
+.socialNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.65rem;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-text) 14%, var(--color-border));
+  background: color-mix(in srgb, var(--color-bg) 72%, var(--color-surface-soft));
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 color-mix(in srgb, #fff 40%, transparent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  color: var(--color-text);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--color-text) 22%, var(--color-border));
+    box-shadow:
+      0 10px 22px rgba(0, 0, 0, 0.09),
+      inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--lava-blob-2) 45%, var(--color-accent));
+    outline-offset: 3px;
+  }
+}
+
+.socialLinkIcon {
+  min-width: 5.75rem;
+  padding: 0.5rem 1.15rem;
+}
+
+.socialLogo {
+  display: block;
+  width: auto !important;
+  height: 1.85rem !important;
+  max-width: 7.25rem !important;
+  object-fit: contain;
+  object-position: center;
+}
+
+.socialLogoWide {
+  height: 1.75rem !important;
+  max-width: 9rem !important;
+}
+
+.socialLogoLinkedin {
+  height: 2rem !important;
+  max-width: 8.5rem !important;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .copyright {
   margin: 0.15rem 0 0;
   font-size: 0.78rem;

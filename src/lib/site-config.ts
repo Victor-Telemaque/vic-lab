@@ -6,21 +6,32 @@ export type SiteLocale = (typeof siteLocales)[number];
 
 export const defaultSiteLocale: SiteLocale = "fr";
 
+export const socialLinks = {
+  github: "https://github.com/Victor-Telemaque",
+  linkedin: "https://www.linkedin.com/in/victor-four%C3%A9-dev",
+  email: "mailto:hello@vic-lab.dev",
+} as const;
+
 export const siteConfig = {
   name: "Vic Lab",
-  ownerName: "Victor",
+  ownerName: "Victor Fouré",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://vic-lab.dev",
   email: "hello@vic-lab.dev",
   favicon: "/assets/story/vic-labs-logo.png",
   appleIcon: "/assets/story/vic-labs-logo.png",
   ogImage: "/assets/story/peaceful-train.jpg",
+  heroPoster: "/assets/story/peaceful-train.jpg",
   location: {
     region: "Provence-Alpes-Côte d'Azur",
     regionShort: "PACA",
     country: "France",
     countryCode: "FR",
+    geoRegion: "FR-PAC",
   },
-  socialProfiles: [] as string[],
+  socialProfiles: [
+    socialLinks.github,
+    socialLinks.linkedin,
+  ],
 } as const;
 
 export const seoContent = {
@@ -72,4 +83,9 @@ export const seoContent = {
 
 export function isSiteLocale(value: string): value is SiteLocale {
   return siteLocales.includes(value as SiteLocale);
+}
+
+export function getGoogleSiteVerification(): string | undefined {
+  const value = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+  return value || undefined;
 }
