@@ -9,14 +9,14 @@ export const defaultSiteLocale: SiteLocale = "fr";
 export const socialLinks = {
   github: "https://github.com/Victor-Telemaque",
   linkedin: "https://www.linkedin.com/in/victor-four%C3%A9-dev",
-  email: "mailto:hello@vic-lab.dev",
+  email: "mailto:foure.v@live.fr",
 } as const;
 
 export const siteConfig = {
   name: "Vic Lab",
   ownerName: "Victor Fouré",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://vic-lab.dev",
-  email: "hello@vic-lab.dev",
+  email: "foure.v@live.fr",
   favicon: "/assets/story/vic-labs-logo.png",
   appleIcon: "/assets/story/vic-labs-logo.png",
   ogImage: "/assets/story/peaceful-train.jpg",

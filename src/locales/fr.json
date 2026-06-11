@@ -66,7 +66,14 @@
   "theme.light": "Light",
   "theme.dark": "Dark",
 
-  "siteControls.toggleLabel": "Langue et thème",
-  "siteControls.panelLabel": "Langue et thème",
-  "siteControls.collapse": "Fermer les réglages"
+  "nav.sections.ariaLabel": "Sections du site",
+  "nav.sections.projects": "Projets",
+  "nav.sections.about": "À propos",
+  "nav.sections.stack": "Stack",
+  "nav.sections.contact": "Contact",
+  "nav.postHero.ariaLabel": "Accès rapide",
+
+  "siteControls.toggleLabel": "Menu, langue et thème",
+  "siteControls.panelLabel": "Navigation, langue et thème",
+  "siteControls.collapse": "Fermer le menu"
 }

@@ -1,27 +1,30 @@
-"use client";
+'use client';
 
-import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { CloudCurtainSection } from "@/components/effects/cloud-curtain";
+import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { CloudCurtainSection } from '@/components/effects/cloud-curtain';
 import {
   sectionRevealItem,
   storyStripItemReveal,
   storyStripReveal,
   storyStripSkillItemReveal,
   storyStripSkillsStagger,
-} from "@/components/motion/section-variants";
-import { SectionReveal } from "@/components/motion/section-reveal";
-import { ContentSection } from "@/components/sections/content-section";
-import { HeroScrollSequence } from "@/components/sections/hero-scroll-sequence";
-import { InspirationalStampLayer } from "@/components/sections/inspirational-stamp-layer";
-import { ProjectsCarousel } from "@/components/sections/projects-carousel";
-import { SectionMediaBackdrop } from "@/components/sections/section-media-backdrop";
-import { SiteFooter } from "@/components/sections/site-footer";
-import { StackCarousel } from "@/components/sections/stack-carousel";
-import { useIntl } from "react-intl";
-import { useAppLocale } from "@/components/i18n/intl-provider";
-import { PostHeroSiteControls } from "@/components/theme/post-hero-site-controls";
-import { NarrativeMedia } from "@/components/media/narrative-media";
+} from '@/components/motion/section-variants';
+import { SectionReveal } from '@/components/motion/section-reveal';
+import { PostHeroQuickNav } from '@/components/navigation/post-hero-quick-nav';
+import { SectionNavLink } from '@/components/navigation/section-nav-link';
+import { SiteNavigationProvider } from '@/components/navigation/site-navigation-context';
+import { ContentSection } from '@/components/sections/content-section';
+import { HeroScrollSequence } from '@/components/sections/hero-scroll-sequence';
+import { InspirationalStampLayer } from '@/components/sections/inspirational-stamp-layer';
+import { ProjectsCarousel } from '@/components/sections/projects-carousel';
+import { SectionMediaBackdrop } from '@/components/sections/section-media-backdrop';
+import { SiteFooter } from '@/components/sections/site-footer';
+import { StackCarousel } from '@/components/sections/stack-carousel';
+import { useIntl } from 'react-intl';
+import { useAppLocale } from '@/components/i18n/intl-provider';
+import { PostHeroSiteControls } from '@/components/theme/post-hero-site-controls';
+import { NarrativeMedia } from '@/components/media/narrative-media';
 import {
   aboutBackground,
   narrativeMedia,
@@ -29,20 +32,40 @@ import {
   skillHighlights,
   stackBackground,
   stackLogos,
-} from "@/data/portfolio-content";
-import styles from "./portfolio-home.module.scss";
+} from '@/data/portfolio-content';
+import styles from './portfolio-home.module.scss';
 
 type Props = {
   projectsIndex?: React.ReactNode;
 };
 
 export function PortfolioHome({ projectsIndex }: Props) {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <SiteNavigationProvider initialPostHero={Boolean(shouldReduceMotion)}>
+      <PortfolioHomeContent
+        projectsIndex={projectsIndex}
+        shouldReduceMotion={Boolean(shouldReduceMotion)}
+      />
+    </SiteNavigationProvider>
+  );
+}
+
+type ContentProps = {
+  projectsIndex?: React.ReactNode;
+  shouldReduceMotion: boolean;
+};
+
+function PortfolioHomeContent({
+  projectsIndex,
+  shouldReduceMotion,
+}: ContentProps) {
   const intl = useIntl();
   const { locale } = useAppLocale();
-  const shouldReduceMotion = useReducedMotion();
   const heroTrackRef = useRef<HTMLElement>(null);
   const [isPostHeroRevealed, setIsPostHeroRevealed] = useState(
-    () => Boolean(shouldReduceMotion),
+    shouldReduceMotion,
   );
 
   useEffect(() => {
@@ -57,8 +80,8 @@ export function PortfolioHome({ projectsIndex }: Props) {
     };
 
     revealIfScrolled();
-    window.addEventListener("scroll", revealIfScrolled, { passive: true });
-    return () => window.removeEventListener("scroll", revealIfScrolled);
+    window.addEventListener('scroll', revealIfScrolled, { passive: true });
+    return () => window.removeEventListener('scroll', revealIfScrolled);
   }, [isPostHeroRevealed, shouldReduceMotion]);
 
   return (
@@ -71,28 +94,39 @@ export function PortfolioHome({ projectsIndex }: Props) {
         />
       ) : null}
       <PostHeroSiteControls />
+      <PostHeroQuickNav />
 
       <div className={styles.page}>
         {shouldReduceMotion ? (
           <div className={styles.sectionShell}>
             <section className={styles.hero}>
-              <p className={styles.kicker}>{intl.formatMessage({ id: "hero.kicker" })}</p>
-              <h1 className={styles.title}>{intl.formatMessage({ id: "hero.title" })}</h1>
-              <p className={styles.lead}>{intl.formatMessage({ id: "hero.lead" })}</p>
+              <p className={styles.kicker}>
+                {intl.formatMessage({ id: 'hero.kicker' })}
+              </p>
+              <h1 className={styles.title}>
+                {intl.formatMessage({ id: 'hero.title' })}
+              </h1>
+              <p className={styles.lead}>
+                {intl.formatMessage({ id: 'hero.lead' })}
+              </p>
               <div className={styles.heroActions}>
-                <a href="#projects" className={`${styles.primaryAction} ${styles.rippleTarget}`}>
-                  {intl.formatMessage({ id: "hero.projectsCta" })}
-                </a>
-                <a href="#contact" className={`${styles.secondaryAction} ${styles.rippleTarget}`}>
-                  {intl.formatMessage({ id: "hero.contactCta" })}
-                </a>
+                <SectionNavLink
+                  sectionId="projects"
+                  labelKey="hero.projectsCta"
+                  className={`${styles.primaryAction} ${styles.rippleTarget}`}
+                />
+                <SectionNavLink
+                  sectionId="contact"
+                  labelKey="hero.contactCta"
+                  className={`${styles.secondaryAction} ${styles.rippleTarget}`}
+                />
               </div>
               <aside className={styles.narrativePanel}>
                 <p className={styles.narrativeLabel}>
-                  {intl.formatMessage({ id: "hero.narrativeLabel" })}
+                  {intl.formatMessage({ id: 'hero.narrativeLabel' })}
                 </p>
                 <p className={styles.narrativeDescription}>
-                  {intl.formatMessage({ id: "hero.narrativeDescription" })}
+                  {intl.formatMessage({ id: 'hero.narrativeDescription' })}
                 </p>
                 <NarrativeMedia
                   posterSrc={narrativeMedia.posterSrc}
@@ -111,13 +145,22 @@ export function PortfolioHome({ projectsIndex }: Props) {
           variants={storyStripReveal}
           trigger={isPostHeroRevealed}
         >
-          <motion.p className={styles.storyLabel} variants={storyStripItemReveal}>
-            {intl.formatMessage({ id: "story.label" })}
+          <motion.p
+            className={styles.storyLabel}
+            variants={storyStripItemReveal}
+          >
+            {intl.formatMessage({ id: 'story.label' })}
           </motion.p>
-          <motion.p className={styles.storyText} variants={storyStripItemReveal}>
-            {intl.formatMessage({ id: "story.text" })}
+          <motion.p
+            className={styles.storyText}
+            variants={storyStripItemReveal}
+          >
+            {intl.formatMessage({ id: 'story.text' })}
           </motion.p>
-          <motion.ul className={styles.skills} variants={storyStripSkillsStagger}>
+          <motion.ul
+            className={styles.skills}
+            variants={storyStripSkillsStagger}
+          >
             {skillHighlights[locale].map((skill) => (
               <motion.li key={skill} variants={storyStripSkillItemReveal}>
                 {skill}
@@ -131,18 +174,30 @@ export function PortfolioHome({ projectsIndex }: Props) {
           isRevealed={isPostHeroRevealed}
           revealDelay={0.4}
         >
-          <SectionReveal as="div" className={`${styles.projects} ${styles.projectsPanel}`}>
-            <motion.div className={styles.sectionHeading} variants={sectionRevealItem}>
-              <span>{intl.formatMessage({ id: "projects.label" })}</span>
-              <h2>{intl.formatMessage({ id: "projects.title" })}</h2>
+          <SectionReveal
+            as="div"
+            className={`${styles.projects} ${styles.projectsPanel}`}
+          >
+            <motion.div
+              className={styles.sectionHeading}
+              variants={sectionRevealItem}
+            >
+              <span>{intl.formatMessage({ id: 'projects.label' })}</span>
+              <h2>{intl.formatMessage({ id: 'projects.title' })}</h2>
             </motion.div>
-            <motion.p className={styles.sectionHook} variants={sectionRevealItem}>
-              {intl.formatMessage({ id: "projects.hook" })}
+            <motion.p
+              className={styles.sectionHook}
+              variants={sectionRevealItem}
+            >
+              {intl.formatMessage({ id: 'projects.hook' })}
             </motion.p>
             <motion.p className={styles.panelBody} variants={sectionRevealItem}>
-              {intl.formatMessage({ id: "projects.main" })}
+              {intl.formatMessage({ id: 'projects.main' })}
             </motion.p>
-            <motion.div className={styles.projectGrid} variants={sectionRevealItem}>
+            <motion.div
+              className={styles.projectGrid}
+              variants={sectionRevealItem}
+            >
               <ProjectsCarousel projects={partnerProjects} locale={locale} />
               {projectsIndex}
             </motion.div>
@@ -151,6 +206,7 @@ export function PortfolioHome({ projectsIndex }: Props) {
 
         <SectionReveal
           as="section"
+          id="about"
           className={`${styles.about} ${styles.contentPanel} ${styles.mediaPanel}`}
         >
           <SectionMediaBackdrop
@@ -159,19 +215,23 @@ export function PortfolioHome({ projectsIndex }: Props) {
             imageSrc={aboutBackground.imageSrc}
             posterSrc={aboutBackground.imageSrc}
           />
-          <motion.div className={styles.sectionHeading} variants={sectionRevealItem}>
-            <span>{intl.formatMessage({ id: "about.label" })}</span>
-            <h2>{intl.formatMessage({ id: "about.title" })}</h2>
+          <motion.div
+            className={styles.sectionHeading}
+            variants={sectionRevealItem}
+          >
+            <span>{intl.formatMessage({ id: 'about.label' })}</span>
+            <h2>{intl.formatMessage({ id: 'about.title' })}</h2>
           </motion.div>
           <motion.p className={styles.sectionHook} variants={sectionRevealItem}>
-            {intl.formatMessage({ id: "about.hook" })}
+            {intl.formatMessage({ id: 'about.hook' })}
           </motion.p>
           <motion.p className={styles.panelBody} variants={sectionRevealItem}>
-            {intl.formatMessage({ id: "about.description" })}
+            {intl.formatMessage({ id: 'about.description' })}
           </motion.p>
         </SectionReveal>
 
         <ContentSection
+          id="stack"
           className={`${styles.stackPanel} ${styles.contentPanel}`}
           labelKey="stack.label"
           titleKey="stack.title"
@@ -189,6 +249,7 @@ export function PortfolioHome({ projectsIndex }: Props) {
         </ContentSection>
 
         <ContentSection
+          id="why"
           className={`${styles.whyPanel} ${styles.contentPanel}`}
           labelKey="why.label"
           titleKey="why.title"
@@ -202,21 +263,27 @@ export function PortfolioHome({ projectsIndex }: Props) {
           className={`${styles.contact} ${styles.contentPanel}`}
           id="contact"
         >
-          <motion.div className={styles.contactIntro} variants={sectionRevealItem}>
+          <motion.div
+            className={styles.contactIntro}
+            variants={sectionRevealItem}
+          >
             <div className={styles.sectionHeading}>
-              <span>{intl.formatMessage({ id: "contact.label" })}</span>
-              <h2>{intl.formatMessage({ id: "contact.title" })}</h2>
+              <span>{intl.formatMessage({ id: 'contact.label' })}</span>
+              <h2>{intl.formatMessage({ id: 'contact.title' })}</h2>
             </div>
             <p className={styles.sectionHook}>
-              {intl.formatMessage({ id: "contact.hook" })}
+              {intl.formatMessage({ id: 'contact.hook' })}
             </p>
             <p className={styles.panelBody}>
-              {intl.formatMessage({ id: "contact.description" })}
+              {intl.formatMessage({ id: 'contact.description' })}
             </p>
           </motion.div>
-          <motion.div className={styles.contactActions} variants={sectionRevealItem}>
-            <a className={styles.contactCta} href="mailto:hello@vic-lab.dev">
-              hello@vic-lab.dev
+          <motion.div
+            className={styles.contactActions}
+            variants={sectionRevealItem}
+          >
+            <a className={styles.contactCta} href="mailto:foure.v@live.fr">
+              foure.v@live.fr
             </a>
           </motion.div>
         </SectionReveal>

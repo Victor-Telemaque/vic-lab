@@ -7,8 +7,9 @@ import {
   type MotionValue,
   type Variants,
 } from "framer-motion";
-import { type RefObject, useMemo, useRef } from "react";
+import { type RefObject, useEffect, useMemo, useRef } from "react";
 import { useIntl } from "react-intl";
+import { useSiteNavigation } from "@/components/navigation/site-navigation-context";
 import { heroBackground } from "@/data/portfolio-content";
 import { useHeroScrollExit } from "@/hooks/use-hero-scroll-exit";
 import styles from "./hero-scroll-sequence.module.scss";
@@ -70,6 +71,7 @@ type Props = {
 export function HeroScrollSequence({ trackRef, onExited }: Props) {
   const intl = useIntl();
   const shouldReduceMotion = useReducedMotion();
+  const { registerHeroExit, setHeroGated, setPostHero } = useSiteNavigation();
   const title = intl.formatMessage({ id: "hero.title" });
   const internalTrackRef = useRef<HTMLElement>(null);
   const resolvedTrackRef = trackRef ?? internalTrackRef;
@@ -78,6 +80,34 @@ export function HeroScrollSequence({ trackRef, onExited }: Props) {
     isEnabled: !shouldReduceMotion,
     onExited,
   });
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      registerHeroExit(null);
+      setHeroGated(false);
+      return;
+    }
+
+    registerHeroExit(playExit);
+    setHeroGated(!hasExited);
+
+    return () => {
+      registerHeroExit(null);
+      setHeroGated(false);
+    };
+  }, [
+    hasExited,
+    playExit,
+    registerHeroExit,
+    setHeroGated,
+    shouldReduceMotion,
+  ]);
+
+  useEffect(() => {
+    if (shouldReduceMotion || hasExited) {
+      setPostHero(true);
+    }
+  }, [hasExited, setPostHero, shouldReduceMotion]);
 
   const sceneScale = useTransform(exitProgress, [0, 0.55, 0.78, 0.9, 1], [1, 1, 0.97, 0.9, 0.82]);
   const sceneY = useTransform(exitProgress, [0, 0.5, 0.82, 1], [0, 0, -48, -140]);

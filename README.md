@@ -77,5 +77,5 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Contact
 
-- Email: `hello@vic-lab.dev`
+- Email: `foure.v@live.fr`
 - GitHub: [Victor-Telemaque/vic-lab](https://github.com/Victor-Telemaque/vic-lab)

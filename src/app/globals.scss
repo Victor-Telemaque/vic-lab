@@ -179,6 +179,14 @@ body::after {
   }
 }
 
+#projects,
+#about,
+#stack,
+#why,
+#contact {
+  scroll-margin-top: clamp(4.5rem, 8vh, 5.5rem);
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -21,13 +21,13 @@ const socialLabels = {
     nav: 'Profils et contact',
     github: 'GitHub',
     linkedin: 'LinkedIn',
-    email: 'hello@vic-lab.dev',
+    email: 'foure.v@live.fr',
   },
   en: {
     nav: 'Profiles and contact',
     github: 'GitHub',
     linkedin: 'LinkedIn',
-    email: 'hello@vic-lab.dev',
+    email: 'foure.v@live.fr',
   },
 } as const;
 

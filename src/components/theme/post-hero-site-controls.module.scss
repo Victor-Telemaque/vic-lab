@@ -1,3 +1,59 @@
+.desktopSectionNav {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + clamp(0.65rem, 1.8vw, 1.15rem));
+  left: calc(env(safe-area-inset-left, 0px) + clamp(0.65rem, 1.8vw, 1.15rem));
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  max-width: min(36rem, calc(100% - 11rem));
+  padding: 0.26rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.sectionNavLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.32rem 0.72rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+
+  &:hover {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-surface-soft) 70%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--lava-blob-2) 45%, var(--color-accent));
+    outline-offset: 2px;
+  }
+}
+
 .desktopHost {
   position: fixed;
   top: calc(env(safe-area-inset-top, 0px) + clamp(0.65rem, 1.8vw, 1.15rem));
@@ -236,13 +292,54 @@
   }
 }
 
+.dockSectionNav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.dockSectionList {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.18rem;
+  width: 100%;
+}
+
+.dockSectionLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.34rem 0.55rem;
+  border-radius: 0.55rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-bg) 55%, transparent);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-surface-soft) 80%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--lava-blob-2) 45%, var(--color-accent));
+    outline-offset: 2px;
+  }
+}
+
 .dockPanel {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: 7.35rem;
+  width: 8.65rem;
   padding: 0.2rem 0.18rem 0.22rem;
   border-radius: 0.7rem;
   background: color-mix(in srgb, var(--color-surface-soft) 50%, transparent);

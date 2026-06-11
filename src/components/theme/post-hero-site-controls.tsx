@@ -11,6 +11,7 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { useIntl } from "react-intl";
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import { useAppLocale } from "@/components/i18n/intl-provider";
+import { SectionNav } from "@/components/navigation/section-nav";
 import { ThemeSwitcher } from "./theme-switcher";
 import { useAppTheme } from "./theme-provider";
 import styles from "./post-hero-site-controls.module.scss";
@@ -127,9 +128,14 @@ export function PostHeroSiteControls() {
 
   const panelTransition = shouldReduceMotion ? { duration: 0.12 } : closeTween;
   const panelLabel = intl.formatMessage({ id: "siteControls.panelLabel" });
+  const closeAfterNavigate = close;
 
   return (
     <>
+      <SectionNav
+        className={styles.desktopSectionNav}
+        linkClassName={styles.sectionNavLink}
+      />
       <div
         className={styles.desktopHost}
         role="group"
@@ -201,8 +207,30 @@ export function PostHeroSiteControls() {
               transition={panelTransition}
             >
               <motion.div
-                className={styles.dockRow}
+                className={styles.dockSectionNav}
                 custom={0}
+                variants={rowVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <SectionNav
+                  className={styles.dockSectionList}
+                  linkClassName={styles.dockSectionLink}
+                  onNavigate={closeAfterNavigate}
+                />
+              </motion.div>
+              <motion.span
+                className={styles.dockDivider}
+                aria-hidden
+                initial={{ opacity: 0, scaleX: 0.5 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                exit={{ opacity: 0, scaleX: 0.2 }}
+                transition={panelTransition}
+              />
+              <motion.div
+                className={styles.dockRow}
+                custom={1}
                 variants={rowVariants}
                 initial="hidden"
                 animate="visible"
@@ -220,7 +248,7 @@ export function PostHeroSiteControls() {
               />
               <motion.div
                 className={styles.dockRow}
-                custom={1}
+                custom={2}
                 variants={rowVariants}
                 initial="hidden"
                 animate="visible"
