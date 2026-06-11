@@ -1,5 +1,6 @@
-import { PortfolioHome } from "@/components/sections/portfolio-home";
+import { redirect } from "next/navigation";
+import { defaultSiteLocale } from "@/lib/site-config";
 
-export default function Home() {
-  return <PortfolioHome />;
+export default function RootPage() {
+  redirect(`/${defaultSiteLocale}`);
 }

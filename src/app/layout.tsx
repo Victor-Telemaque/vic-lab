@@ -1,10 +1,10 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { IBM_Plex_Sans_JP, Manrope } from "next/font/google";
-import { AppIntlProvider } from "@/components/i18n/intl-provider";
 import { HeroGateInitScript } from "@/components/theme/hero-gate-init-script";
 import { ThemeInitScript } from "@/components/theme/theme-init-script";
 import { SmoothScrollProvider } from "@/components/scroll/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { defaultSiteLocale } from "@/lib/site-config";
 import "./globals.scss";
 
 const manrope = Manrope({
@@ -20,12 +20,6 @@ const ibmPlexSansJp = IBM_Plex_Sans_JP({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Vic Lab | Senior Front-End Developer",
-  description:
-    "Senior front-end developer focused on product, performance, and maintainable interfaces. Vue, React, TypeScript.",
-};
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -39,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="fr"
+      lang={defaultSiteLocale}
       suppressHydrationWarning
       className={`${manrope.variable} ${ibmPlexSansJp.variable} h-full antialiased`}
     >
@@ -47,9 +41,7 @@ export default function RootLayout({
         <ThemeInitScript />
         <HeroGateInitScript />
         <ThemeProvider>
-          <SmoothScrollProvider>
-            <AppIntlProvider>{children}</AppIntlProvider>
-          </SmoothScrollProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,7 +1,8 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { IntlProvider } from "react-intl";
+import { defaultSiteLocale, type SiteLocale } from "@/lib/site-config";
 import { Locale, messages } from "@/i18n/messages";
 
 type IntlContextValue = {
@@ -13,24 +14,19 @@ const IntlContext = createContext<IntlContextValue | null>(null);
 
 type Props = {
   children: React.ReactNode;
+  initialLocale?: SiteLocale;
 };
 
-function readStoredLocale(): Locale {
-  const savedLocale = window.localStorage.getItem("portfolio-locale");
-  if (savedLocale === "fr" || savedLocale === "en") {
-    return savedLocale;
-  }
-
-  const browserLanguage = window.navigator.language.toLowerCase();
-  return browserLanguage.startsWith("en") ? "en" : "fr";
-}
-
-export function AppIntlProvider({ children }: Props) {
-  const [locale, setLocale] = useState<Locale>("fr");
+export function AppIntlProvider({ children, initialLocale = defaultSiteLocale }: Props) {
+  const [locale, setLocale] = useState<Locale>(initialLocale);
 
   useEffect(() => {
-    setLocale(readStoredLocale());
-  }, []);
+    setLocale(initialLocale);
+  }, [initialLocale]);
+
+  useLayoutEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   useEffect(() => {
     window.localStorage.setItem("portfolio-locale", locale);
