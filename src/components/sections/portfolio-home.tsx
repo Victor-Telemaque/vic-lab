@@ -6,6 +6,9 @@ import { CloudCurtainSection } from '@/components/effects/cloud-curtain';
 import { PastelRainbowArc } from '@/components/effects/pastel-rainbow-arc';
 import { SitePastelBackground } from '@/components/effects/site-pastel-background';
 import {
+  VicLegoFooterPeek,
+} from '@/components/effects/vic-lego-cameos';
+import {
   sectionRevealItem,
   storyStripItemReveal,
   storyStripReveal,
@@ -34,6 +37,7 @@ import {
   skillHighlights,
   stackBackground,
   stackLogos,
+  storyBackground,
 } from '@/data/portfolio-content';
 import styles from './portfolio-home.module.scss';
 
@@ -66,6 +70,8 @@ function PortfolioHomeContent({
   const intl = useIntl();
   const { locale } = useAppLocale();
   const heroTrackRef = useRef<HTMLElement>(null);
+  const storyAnchorRef = useRef<HTMLDivElement>(null);
+  const footerAnchorRef = useRef<HTMLDivElement>(null);
   const [isPostHeroRevealed, setIsPostHeroRevealed] = useState(
     shouldReduceMotion,
   );
@@ -88,7 +94,7 @@ function PortfolioHomeContent({
 
   return (
     <main className={styles.site}>
-      <SitePastelBackground />
+      <SitePastelBackground cloudPeekAnchorRef={storyAnchorRef} />
       <InspirationalStampLayer isRevealed={isPostHeroRevealed} />
       {!shouldReduceMotion ? (
         <HeroScrollSequence
@@ -144,7 +150,7 @@ function PortfolioHomeContent({
           </div>
         ) : null}
 
-        <div className={styles.storyRainbowGroup}>
+        <div ref={storyAnchorRef} className={styles.storyRainbowGroup}>
           <SectionReveal
             as="section"
             className={styles.storyStrip}
@@ -152,34 +158,46 @@ function PortfolioHomeContent({
             variants={storyStripReveal}
             trigger={isPostHeroRevealed}
           >
-            <motion.p
-              className={styles.storyLabel}
-              variants={storyStripItemReveal}
-            >
-              {intl.formatMessage({ id: 'story.label' })}
-            </motion.p>
-            <motion.p
-              className={styles.storyText}
-              variants={storyStripItemReveal}
-            >
-              {intl.formatMessage({ id: 'story.text' })}
-            </motion.p>
-            <motion.p
-              className={styles.storyTextSecondary}
-              variants={storyStripItemReveal}
-            >
-              {intl.formatMessage({ id: 'story.textSecondary' })}
-            </motion.p>
-            <motion.ul
-              className={styles.skills}
-              variants={storyStripSkillsStagger}
-            >
-              {skillHighlights[locale].map((skill) => (
-                <motion.li key={skill} variants={storyStripSkillItemReveal}>
-                  {skill}
-                </motion.li>
-              ))}
-            </motion.ul>
+            <SectionMediaBackdrop
+              mode="image"
+              overlayVariant="story"
+              imageSrc={storyBackground.imageSrc}
+            />
+            <div className={styles.storyDecor} aria-hidden>
+              <span className={styles.storyDecorOrb} />
+              <span className={styles.storyDecorRing} />
+              <span className={styles.storyDecorArc} />
+            </div>
+            <div className={styles.storyCopy}>
+              <motion.p
+                className={styles.storyLabel}
+                variants={storyStripItemReveal}
+              >
+                {intl.formatMessage({ id: 'story.label' })}
+              </motion.p>
+              <motion.p
+                className={styles.storyText}
+                variants={storyStripItemReveal}
+              >
+                {intl.formatMessage({ id: 'story.text' })}
+              </motion.p>
+              <motion.p
+                className={styles.storyTextSecondary}
+                variants={storyStripItemReveal}
+              >
+                {intl.formatMessage({ id: 'story.textSecondary' })}
+              </motion.p>
+              <motion.ul
+                className={styles.skills}
+                variants={storyStripSkillsStagger}
+              >
+                {skillHighlights[locale].map((skill) => (
+                  <motion.li key={skill} variants={storyStripSkillItemReveal}>
+                    {skill}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </div>
           </SectionReveal>
 
           <div className={styles.rainbowBand} aria-hidden>
@@ -277,38 +295,46 @@ function PortfolioHomeContent({
           pillsKey="why.short"
         />
 
-        <SectionReveal
-          as="section"
-          className={`${styles.contact} ${styles.contentPanel}`}
-          id="contact"
-        >
-          <motion.div
-            className={styles.contactIntro}
-            variants={sectionRevealItem}
+        <div className={styles.contactAnchor}>
+          <SectionReveal
+            as="section"
+            className={`${styles.contact} ${styles.contentPanel}`}
+            id="contact"
           >
-            <div className={styles.sectionHeading}>
-              <span>{intl.formatMessage({ id: 'contact.label' })}</span>
-              <h2>{intl.formatMessage({ id: 'contact.title' })}</h2>
-            </div>
-            <p className={styles.sectionHook}>
-              {intl.formatMessage({ id: 'contact.hook' })}
-            </p>
-            <p className={styles.panelBody}>
-              {intl.formatMessage({ id: 'contact.description' })}
-            </p>
-          </motion.div>
-          <motion.div
-            className={styles.contactActions}
-            variants={sectionRevealItem}
-          >
-            <a className={styles.contactCta} href="mailto:foure.v@live.fr">
-              foure.v@live.fr
-            </a>
-          </motion.div>
-        </SectionReveal>
+            <motion.div
+              className={styles.contactIntro}
+              variants={sectionRevealItem}
+            >
+              <div className={styles.sectionHeading}>
+                <span>{intl.formatMessage({ id: 'contact.label' })}</span>
+                <h2>{intl.formatMessage({ id: 'contact.title' })}</h2>
+              </div>
+              <p className={styles.sectionHook}>
+                {intl.formatMessage({ id: 'contact.hook' })}
+              </p>
+              <p className={styles.panelBody}>
+                {intl.formatMessage({ id: 'contact.description' })}
+              </p>
+            </motion.div>
+            <motion.div
+              className={styles.contactActions}
+              variants={sectionRevealItem}
+            >
+              <a className={styles.contactCta} href="mailto:foure.v@live.fr">
+                foure.v@live.fr
+              </a>
+            </motion.div>
+          </SectionReveal>
+        </div>
       </div>
 
-      <SiteFooter partners={partnerProjects} />
+      <div ref={footerAnchorRef} className={styles.footerAnchor}>
+        <VicLegoFooterPeek
+          anchorRef={footerAnchorRef}
+          isEnabled={isPostHeroRevealed}
+        />
+        <SiteFooter partners={partnerProjects} />
+      </div>
     </main>
   );
 }

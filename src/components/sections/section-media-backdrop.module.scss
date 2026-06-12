@@ -31,6 +31,11 @@
   background-repeat: no-repeat;
 }
 
+.backdropStory .mediaImage {
+  background-position: right center;
+  background-size: contain;
+}
+
 .mediaOverlay {
   position: absolute;
   inset: 0;
@@ -69,6 +74,20 @@
       color-mix(in srgb, var(--section-story-mid) 4%, transparent) 0%,
       color-mix(in srgb, var(--section-projects-mid) 0%, transparent) 50%,
       color-mix(in srgb, var(--section-contact-mid) 6%, transparent) 100%
+    );
+}
+
+.overlayStory {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 24%, transparent) 0%,
+      color-mix(in srgb, var(--section-story-mid) 14%, transparent) 100%
+    ),
+    linear-gradient(
+      118deg,
+      color-mix(in srgb, var(--section-story) 10%, transparent) 0%,
+      transparent 58%
     );
 }
 

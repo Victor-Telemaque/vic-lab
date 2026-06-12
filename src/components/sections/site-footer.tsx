@@ -57,6 +57,7 @@ export function SiteFooter({ partners }: Props) {
                   width={160}
                   height={64}
                   unoptimized
+                  style={{ width: 'auto', height: 'auto' }}
                   className={`${styles.partnerLogoImage} ${
                     partner.logoVariant === 'wide'
                       ? styles.partnerLogoImageWide
@@ -81,6 +82,7 @@ export function SiteFooter({ partners }: Props) {
               width={120}
               height={32}
               unoptimized
+              style={{ width: 'auto', height: 'auto' }}
               className={`${styles.socialLogo} ${styles.socialLogoWide}`}
             />
             <span className={styles.srOnly}>{labels.github}</span>
@@ -97,6 +99,7 @@ export function SiteFooter({ partners }: Props) {
               width={220}
               height={62}
               unoptimized
+              style={{ width: 'auto', height: 'auto' }}
               className={`${styles.socialLogo} ${styles.socialLogoLinkedin}`}
             />
             <span className={styles.srOnly}>{labels.linkedin}</span>

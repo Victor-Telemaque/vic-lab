@@ -3,12 +3,13 @@
 import { useReducedMotion } from "framer-motion";
 import styles from "./section-media-backdrop.module.scss";
 
-type OverlayVariant = "projects" | "about" | "stack";
+type OverlayVariant = "projects" | "about" | "stack" | "story";
 
 const overlayClassMap = {
   projects: "overlayProjects",
   about: "overlayAbout",
   stack: "overlayStack",
+  story: "overlayStory",
 } as const;
 
 type Props = {
@@ -34,7 +35,7 @@ export function SectionMediaBackdrop({
     <div
       className={`${styles.backdrop} ${
         overlayVariant === "stack" ? styles.backdropStack : ""
-      }`.trim()}
+      } ${overlayVariant === "story" ? styles.backdropStory : ""}`.trim()}
       aria-hidden
     >
       {shouldPlayVideo ? (

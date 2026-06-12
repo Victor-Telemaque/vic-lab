@@ -19,6 +19,7 @@ export function PartnersShowcase({ partners }: Props) {
               alt={partner.name}
               width={160}
               height={64}
+              style={{ width: 'auto', height: 'auto' }}
               className={styles.logo}
             />
           </div>

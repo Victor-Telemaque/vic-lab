@@ -147,6 +147,10 @@ export const aboutBackground = {
   imageSrc: "/assets/story/peaceful-train.jpg",
 };
 
+export const storyBackground = {
+  imageSrc: "/assets/vidéo/vic-video.gif",
+};
+
 export type InspirationalPatch = {
   id: string;
   src: string;

@@ -42,6 +42,7 @@ function StackCardContent({ logo }: { logo: BrandLogo }) {
         width={200}
         height={80}
         unoptimized
+        style={{ width: 'auto', height: 'auto' }}
         className={styles.stackLogoImage}
       />
     </div>

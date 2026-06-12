@@ -261,7 +261,7 @@
   top: clamp(1.5rem, 6vh, 4rem);
   z-index: 4;
   height: clamp(400px, 70vh, 920px);
-  opacity: 0.64;
+  opacity: 0.78;
 }
 
 .cloudMid .cloudMotionX {
@@ -280,7 +280,7 @@
   top: clamp(3rem, 12vh, 7rem);
   z-index: 5;
   height: clamp(360px, 64vh, 840px);
-  opacity: 0.74;
+  opacity: 0.9;
 }
 
 .cloudNear .cloudMotionX {
@@ -299,7 +299,7 @@
   top: clamp(4.5rem, 18vh, 10rem);
   z-index: 6;
   height: clamp(320px, 58vh, 760px);
-  opacity: 0.68;
+  opacity: 0.84;
   mask-image: linear-gradient(
     to bottom,
     #000 0%,
@@ -368,15 +368,15 @@
   }
 
   .cloudMid {
-    opacity: 0.48;
+    opacity: 0.62;
   }
 
   .cloudNear {
-    opacity: 0.56;
+    opacity: 0.74;
   }
 
   .cloudEdge {
-    opacity: 0.5;
+    opacity: 0.68;
   }
 
   .grain {

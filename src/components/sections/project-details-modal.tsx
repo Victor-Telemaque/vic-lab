@@ -115,6 +115,7 @@ export function ProjectDetailsModal({ project, locale, onClose }: Props) {
                   width={200}
                   height={72}
                   unoptimized
+                  style={{ width: 'auto', height: 'auto' }}
                   className={`${carouselStyles.partnerLogoImage} ${
                     project.logoVariant === 'wide'
                       ? carouselStyles.partnerLogoImageWide

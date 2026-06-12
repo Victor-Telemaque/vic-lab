@@ -112,6 +112,7 @@ function PartnerCardContent({
           width={200}
           height={72}
           unoptimized
+          style={{ width: 'auto', height: 'auto' }}
           className={`${styles.partnerLogoImage} ${
             project.logoVariant === 'wide' ? styles.partnerLogoImageWide : ''
           }`.trim()}

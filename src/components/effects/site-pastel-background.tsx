@@ -1,11 +1,18 @@
+'use client';
+
 import { CloudLayer } from './cloud-layer';
 import { siteCloudLayers } from './cloud-paths';
+import { VicLegoCloudPeek } from './vic-lego-cameos';
 import styles from './site-pastel-background.module.scss';
 
 const farCloudLayer = siteCloudLayers.find((layer) => layer.depth === 'far');
 const frontCloudLayers = siteCloudLayers.filter((layer) => layer.depth !== 'far');
 
-export function SitePastelBackground() {
+type Props = {
+  cloudPeekAnchorRef?: React.RefObject<HTMLElement | null>;
+};
+
+export function SitePastelBackground({ cloudPeekAnchorRef }: Props) {
   return (
     <div className={styles.backdrop} aria-hidden>
       <div className={styles.skyBase} />
@@ -21,9 +28,17 @@ export function SitePastelBackground() {
 
       <div className={styles.cloudStack}>
         {farCloudLayer ? <CloudLayer layer={farCloudLayer} /> : null}
-        {frontCloudLayers.map((layer) => (
-          <CloudLayer key={layer.id} layer={layer} />
-        ))}
+        {frontCloudLayers.flatMap((layer) => [
+          <CloudLayer key={layer.id} layer={layer} />,
+          ...(layer.depth === 'back' && cloudPeekAnchorRef
+            ? [
+                <VicLegoCloudPeek
+                  key={`${layer.id}-lego`}
+                  anchorRef={cloudPeekAnchorRef}
+                />,
+              ]
+            : []),
+        ])}
       </div>
 
       <div className={styles.grain} />
