@@ -3,6 +3,8 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { CloudCurtainSection } from '@/components/effects/cloud-curtain';
+import { PastelRainbowArc } from '@/components/effects/pastel-rainbow-arc';
+import { SitePastelBackground } from '@/components/effects/site-pastel-background';
 import {
   sectionRevealItem,
   storyStripItemReveal,
@@ -86,6 +88,7 @@ function PortfolioHomeContent({
 
   return (
     <main className={styles.site}>
+      <SitePastelBackground />
       <InspirationalStampLayer isRevealed={isPostHeroRevealed} />
       {!shouldReduceMotion ? (
         <HeroScrollSequence
@@ -100,6 +103,9 @@ function PortfolioHomeContent({
         {shouldReduceMotion ? (
           <div className={styles.sectionShell}>
             <section className={styles.hero}>
+              <p className={styles.heroName}>
+                {intl.formatMessage({ id: 'hero.name' })}
+              </p>
               <p className={styles.kicker}>
                 {intl.formatMessage({ id: 'hero.kicker' })}
               </p>
@@ -138,36 +144,48 @@ function PortfolioHomeContent({
           </div>
         ) : null}
 
-        <SectionReveal
-          as="section"
-          className={styles.storyStrip}
-          ariaLabel="Storytelling scroll"
-          variants={storyStripReveal}
-          trigger={isPostHeroRevealed}
-        >
-          <motion.p
-            className={styles.storyLabel}
-            variants={storyStripItemReveal}
+        <div className={styles.storyRainbowGroup}>
+          <SectionReveal
+            as="section"
+            className={styles.storyStrip}
+            ariaLabel="Storytelling scroll"
+            variants={storyStripReveal}
+            trigger={isPostHeroRevealed}
           >
-            {intl.formatMessage({ id: 'story.label' })}
-          </motion.p>
-          <motion.p
-            className={styles.storyText}
-            variants={storyStripItemReveal}
-          >
-            {intl.formatMessage({ id: 'story.text' })}
-          </motion.p>
-          <motion.ul
-            className={styles.skills}
-            variants={storyStripSkillsStagger}
-          >
-            {skillHighlights[locale].map((skill) => (
-              <motion.li key={skill} variants={storyStripSkillItemReveal}>
-                {skill}
-              </motion.li>
-            ))}
-          </motion.ul>
-        </SectionReveal>
+            <motion.p
+              className={styles.storyLabel}
+              variants={storyStripItemReveal}
+            >
+              {intl.formatMessage({ id: 'story.label' })}
+            </motion.p>
+            <motion.p
+              className={styles.storyText}
+              variants={storyStripItemReveal}
+            >
+              {intl.formatMessage({ id: 'story.text' })}
+            </motion.p>
+            <motion.p
+              className={styles.storyTextSecondary}
+              variants={storyStripItemReveal}
+            >
+              {intl.formatMessage({ id: 'story.textSecondary' })}
+            </motion.p>
+            <motion.ul
+              className={styles.skills}
+              variants={storyStripSkillsStagger}
+            >
+              {skillHighlights[locale].map((skill) => (
+                <motion.li key={skill} variants={storyStripSkillItemReveal}>
+                  {skill}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </SectionReveal>
+
+          <div className={styles.rainbowBand} aria-hidden>
+            <PastelRainbowArc />
+          </div>
+        </div>
 
         <CloudCurtainSection
           id="projects"
@@ -255,6 +273,7 @@ function PortfolioHomeContent({
           titleKey="why.title"
           hookKey="why.hook"
           bodyKey="why.main"
+          bodySecondaryKey="why.mainSecondary"
           pillsKey="why.short"
         />
 

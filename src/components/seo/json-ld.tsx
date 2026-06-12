@@ -4,6 +4,10 @@ type Props = {
   locale: SiteLocale;
 };
 
+function escapeJsonLd(value: string) {
+  return value.replace(/</g, "\\u003c");
+}
+
 export function JsonLd({ locale }: Props) {
   const content = seoContent[locale];
   const pageUrl = `${siteConfig.url}/${locale}`;
@@ -105,10 +109,13 @@ export function JsonLd({ locale }: Props) {
     ],
   };
 
+  const jsonLd = escapeJsonLd(JSON.stringify(schema));
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <template
+      dangerouslySetInnerHTML={{
+        __html: `<script type="application/ld+json">${jsonLd}</script>`,
+      }}
     />
   );
 }

@@ -20,6 +20,7 @@ type Props = {
   titleKey: string;
   hookKey: string;
   bodyKey?: string;
+  bodySecondaryKey?: string;
   pillsKey?: string;
   ariaLabel?: string;
   visualSlotClassName?: string;
@@ -34,6 +35,7 @@ export function ContentSection({
   titleKey,
   hookKey,
   bodyKey,
+  bodySecondaryKey,
   pillsKey,
   ariaLabel,
   visualSlotClassName,
@@ -63,6 +65,11 @@ export function ContentSection({
       {bodyKey ? (
         <motion.p className={styles.panelBody} variants={sectionRevealItem}>
           {intl.formatMessage({ id: bodyKey })}
+        </motion.p>
+      ) : null}
+      {bodySecondaryKey ? (
+        <motion.p className={styles.panelBody} variants={sectionRevealItem}>
+          {intl.formatMessage({ id: bodySecondaryKey })}
         </motion.p>
       ) : null}
       {children ? (

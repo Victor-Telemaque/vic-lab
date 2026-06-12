@@ -30,13 +30,11 @@ function readStoredTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: Props) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof document === "undefined") {
-      return "light";
-    }
+  const [theme, setTheme] = useState<Theme>("light");
 
-    return readThemeFromDocument();
-  });
+  useEffect(() => {
+    setTheme(readThemeFromDocument());
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;

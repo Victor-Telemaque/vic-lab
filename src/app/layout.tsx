@@ -1,5 +1,5 @@
 import type { Viewport } from "next";
-import { IBM_Plex_Sans_JP, Manrope } from "next/font/google";
+import { Cormorant_Garamond, IBM_Plex_Sans_JP, Manrope } from "next/font/google";
 import { HeroGateInitScript } from "@/components/theme/hero-gate-init-script";
 import { ThemeInitScript } from "@/components/theme/theme-init-script";
 import { SmoothScrollProvider } from "@/components/scroll/smooth-scroll-provider";
@@ -10,6 +10,14 @@ import "./globals.scss";
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -35,7 +43,7 @@ export default function RootLayout({
     <html
       lang={defaultSiteLocale}
       suppressHydrationWarning
-      className={`${manrope.variable} ${ibmPlexSansJp.variable} h-full antialiased`}
+      className={`${manrope.variable} ${ibmPlexSansJp.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         <ThemeInitScript />

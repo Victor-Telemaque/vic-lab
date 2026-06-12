@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 const heroGateInitScript = `
 (function () {
   try {
@@ -10,5 +12,11 @@ const heroGateInitScript = `
 `;
 
 export function HeroGateInitScript() {
-  return <script dangerouslySetInnerHTML={{ __html: heroGateInitScript }} />;
+  return (
+    <Script
+      id="portfolio-hero-gate-init"
+      strategy="beforeInteractive"
+      dangerouslySetInnerHTML={{ __html: heroGateInitScript }}
+    />
+  );
 }

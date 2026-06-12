@@ -145,6 +145,14 @@ export function HeroScrollSequence({ trackRef, onExited }: Props) {
   const heroContent = (
     <>
       <motion.p
+        className={styles.heroName}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.05 }}
+      >
+        {intl.formatMessage({ id: "hero.name" })}
+      </motion.p>
+      <motion.p
         className={styles.kicker}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -185,6 +193,7 @@ export function HeroScrollSequence({ trackRef, onExited }: Props) {
         <div className={styles.scene}>
           <HeroVideoBackdrop shouldPlayVideo={false} />
           <div className={styles.inner}>
+            <p className={styles.heroName}>{intl.formatMessage({ id: "hero.name" })}</p>
             <p className={styles.kicker}>{intl.formatMessage({ id: "hero.kicker" })}</p>
             <h1 className={styles.title}>
               {lineChunks.map((line) => (

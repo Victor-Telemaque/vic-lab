@@ -203,6 +203,18 @@
   will-change: transform, filter;
 }
 
+.heroName {
+  margin: 0;
+  font-family: var(--font-signature);
+  font-size: clamp(1.45rem, 3.4vw, 2.05rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
 .kicker {
   margin: 0;
   font-family: var(--font-jp);

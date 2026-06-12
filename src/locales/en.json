@@ -1,4 +1,5 @@
 {
+  "hero.name": "Victor Fouré",
   "hero.kicker": "Senior Front-End · Product & craft",
   "hero.title": "Solid interfaces for products built to last.",
   "hero.lead": "Complex business challenges → performant, maintainable web experiences. No posturing, no over-engineering.",
@@ -12,7 +13,8 @@
   "hero.scrollSceneLabel": "Scroll-driven hero introduction",
 
   "story.label": "In short",
-  "story.text": "Product-minded senior — I align business, design, and code to ship fast without sacrificing quality.",
+  "story.text": "I build web applications with the same philosophy I bring to every project: curiosity, rigor, and a drive to keep learning.",
+  "story.textSecondary": "A Full Stack developer focused on modern web technologies, I enjoy turning concepts into concrete experiences — whether it's a product, a tool, or an idea still taking shape.",
 
   "projects.label": "Projects",
   "projects.title": "Products in production.",
@@ -41,10 +43,11 @@
   "stack.carousel.hint": "Swipe, or use the arrows and dots.",
 
   "why.label": "Collaboration",
-  "why.title": "Why work with me",
-  "why.hook": "When I'm the right fit — and when I'm not.",
-  "why.main": "Ambitious product, real constraints, need for an autonomous, transparent senior.",
-  "why.short": "Clarity · Craft · Pragmatism · Respect.",
+  "why.title": "A creative senior — with product and business vision",
+  "why.hook": "From front-end craft to business goals, roadmap, and ROI.",
+  "why.main": "I don't just ship screens: I think in product impact, prioritization, and return on investment. Used to working with POs, PMs, and business stakeholders, I turn goals into concrete technical trade-offs — what we ship, what we defer, and why.",
+  "why.mainSecondary": "You get a creative, demanding front-end developer and a partner who thinks about maintainability cost, time-to-market, and value delivered — no consultant posturing, same goal: a product that lasts and pays off.",
+  "why.short": "Product mindset · PO/PM fluency · ROI · Craft · Autonomy",
 
   "contact.label": "Contact",
   "contact.title": "Let's talk about your next product.",

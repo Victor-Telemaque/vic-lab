@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 const themeInitScript = `
 (function () {
   try {
@@ -17,5 +19,11 @@ const themeInitScript = `
 `;
 
 export function ThemeInitScript() {
-  return <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />;
+  return (
+    <Script
+      id="portfolio-theme-init"
+      strategy="beforeInteractive"
+      dangerouslySetInnerHTML={{ __html: themeInitScript }}
+    />
+  );
 }

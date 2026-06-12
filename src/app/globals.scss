@@ -12,6 +12,7 @@
   --color-surface-soft-overlay: rgba(255, 255, 255, 0.86);
   --font-display: var(--font-manrope), sans-serif;
   --font-jp: var(--font-ibm-plex-sans-jp), sans-serif;
+  --font-signature: var(--font-cormorant), "Times New Roman", serif;
   --lava-blob-1: rgba(247, 51, 146, 0.62);
   --lava-blob-2: rgba(29, 212, 255, 0.54);
   --lava-blob-3: rgba(93, 96, 255, 0.56);
@@ -35,6 +36,32 @@
   --logo-stage-border: rgba(17, 17, 17, 0.1);
   --page-gutter: clamp(0.75rem, 4vw, 1.5rem);
   --page-max-width: 1000px;
+  --site-sky-top: #fff8fc;
+  --site-sky-mid: #faf6ff;
+  --site-sky-bottom: #faf6ff;
+  --site-cloud-far: rgba(255, 210, 230, 0.3);
+  --site-cloud-a: rgba(255, 198, 225, 0.52);
+  --site-cloud-b: rgba(184, 233, 255, 0.48);
+  --site-cloud-c: rgba(226, 212, 255, 0.42);
+  --site-cloud-d: rgba(198, 228, 255, 0.4);
+  --site-cloud-near: rgba(255, 188, 218, 0.56);
+  --site-cloud-edge: rgba(248, 242, 255, 0.68);
+  --site-blob-a: rgba(255, 182, 210, 0.5);
+  --site-blob-b: rgba(160, 220, 255, 0.46);
+  --site-blob-c: rgba(210, 190, 255, 0.4);
+  --site-blob-d: rgba(255, 210, 175, 0.36);
+  --rainbow-stripe-1: hsl(350deg 78% 82%);
+  --rainbow-stripe-2: hsl(320deg 72% 84%);
+  --rainbow-stripe-3: hsl(280deg 68% 86%);
+  --rainbow-stripe-4: hsl(235deg 74% 83%);
+  --rainbow-stripe-5: hsl(205deg 76% 81%);
+  --rainbow-stripe-6: hsl(175deg 62% 82%);
+  --rainbow-stripe-7: hsl(135deg 58% 83%);
+  --rainbow-stripe-8: hsl(95deg 52% 84%);
+  --rainbow-stripe-9: hsl(55deg 82% 85%);
+  --rainbow-stripe-10: hsl(25deg 78% 84%);
+  --rainbow-stripe-11: hsl(355deg 70% 83%);
+  --rainbow-stripe-12: hsl(265deg 64% 85%);
 }
 
 [data-theme="dark"] {
@@ -70,6 +97,32 @@
   --section-about-tint-b: rgba(220, 170, 130, 0.28);
   --logo-stage-bg: #f0f1f5;
   --logo-stage-border: rgba(17, 17, 17, 0.12);
+  --site-sky-top: #14141c;
+  --site-sky-mid: #111118;
+  --site-sky-bottom: #111118;
+  --site-cloud-far: rgba(255, 145, 198, 0.09);
+  --site-cloud-a: rgba(255, 145, 198, 0.16);
+  --site-cloud-b: rgba(126, 215, 255, 0.14);
+  --site-cloud-c: rgba(180, 156, 255, 0.12);
+  --site-cloud-d: rgba(110, 175, 230, 0.11);
+  --site-cloud-near: rgba(200, 150, 220, 0.2);
+  --site-cloud-edge: rgba(20, 20, 28, 0.55);
+  --site-blob-a: rgba(255, 140, 190, 0.14);
+  --site-blob-b: rgba(100, 190, 255, 0.12);
+  --site-blob-c: rgba(160, 130, 230, 0.1);
+  --site-blob-d: rgba(220, 170, 130, 0.09);
+  --rainbow-stripe-1: hsl(350deg 52% 58%);
+  --rainbow-stripe-2: hsl(320deg 48% 56%);
+  --rainbow-stripe-3: hsl(280deg 44% 58%);
+  --rainbow-stripe-4: hsl(235deg 50% 56%);
+  --rainbow-stripe-5: hsl(205deg 46% 54%);
+  --rainbow-stripe-6: hsl(175deg 40% 55%);
+  --rainbow-stripe-7: hsl(135deg 36% 54%);
+  --rainbow-stripe-8: hsl(95deg 34% 56%);
+  --rainbow-stripe-9: hsl(55deg 48% 58%);
+  --rainbow-stripe-10: hsl(25deg 46% 56%);
+  --rainbow-stripe-11: hsl(355deg 44% 57%);
+  --rainbow-stripe-12: hsl(265deg 42% 58%);
 }
 
 *,
@@ -134,49 +187,13 @@ body::after {
 
 body::before {
   z-index: -2;
-  background:
-    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--bg-pastel-a) 92%, transparent) 0%, transparent 44%),
-    radial-gradient(circle at 82% 14%, color-mix(in srgb, var(--bg-pastel-b) 88%, transparent) 0%, transparent 48%),
-    radial-gradient(circle at 52% 86%, color-mix(in srgb, var(--bg-pastel-c) 84%, transparent) 0%, transparent 52%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-bg) 96%, transparent) 0%,
-      color-mix(in srgb, var(--color-bg) 92%, transparent) 100%
-    );
-  opacity: 0.8;
-  animation: bodyPastelFloat 30s ease-in-out infinite alternate;
+  background: var(--site-sky-bottom);
+  opacity: 1;
 }
 
 body::after {
   z-index: -1;
-  background:
-    radial-gradient(circle at 22% 32%, color-mix(in srgb, var(--bg-pastel-a) 68%, transparent) 0%, transparent 34%),
-    radial-gradient(circle at 74% 28%, color-mix(in srgb, var(--bg-pastel-b) 64%, transparent) 0%, transparent 36%);
-  animation: pastelDrift 16s ease-in-out infinite alternate;
-}
-
-@keyframes pastelDrift {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  100% {
-    transform: translate3d(0, -1.8%, 0) scale(1.045);
-  }
-}
-
-@keyframes bodyPastelFloat {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  100% {
-    transform: translate3d(0, -1.4%, 0) scale(1.02);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::after {
-    animation: none;
-  }
+  opacity: 0;
 }
 
 #projects,

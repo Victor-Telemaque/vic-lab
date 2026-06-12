@@ -1,4 +1,5 @@
 {
+  "hero.name": "Victor Fouré",
   "hero.kicker": "Front-End confirmé · Produit & craft",
   "hero.title": "Des interfaces solides pour des produits qui tiennent.",
   "hero.lead": "Enjeux métier complexes → expériences web performantes et maintenables. Sans posture, sans sur-ingénierie.",
@@ -12,7 +13,8 @@
   "hero.scrollSceneLabel": "Introduction animée au scroll",
 
   "story.label": "En bref",
-  "story.text": "Senior orienté produit — j'aligne métier, design et code pour livrer vite sans sacrifier la qualité.",
+  "story.text": "Je construis des applications web avec la même philosophie que j'aborde les projets : curiosité, exigence et envie d'apprendre en continu.",
+  "story.textSecondary": "Développeur Full Stack spécialisé dans les technologies modernes du web, j'aime transformer des concepts en expériences concrètes, qu'il s'agisse d'un produit, d'un outil ou d'une idée encore à explorer.",
 
   "projects.label": "Projets",
   "projects.title": "Des produits en production.",
@@ -41,10 +43,11 @@
   "stack.carousel.hint": "Glissez, ou utilisez les flèches et les points.",
 
   "why.label": "Collaboration",
-  "why.title": "Pourquoi travailler avec moi",
-  "why.hook": "Quand je suis le bon profil — et quand je ne le suis pas.",
-  "why.main": "Produit ambitieux, contraintes réelles, besoin d'un senior autonome et transparent.",
-  "why.short": "Clarté · Craft · Pragmatisme · Respect.",
+  "why.title": "Un senior créatif — avec une vision produit et business",
+  "why.hook": "Du craft front aux enjeux métier, de la roadmap à la rentabilité.",
+  "why.main": "Je ne me contente pas d'exécuter des écrans : je raisonne en impact produit, en priorisation et en retour sur investissement. Habitué aux échanges avec PO, PM et parties prenantes business, je traduis les objectifs en choix techniques concrets — ce qu'on livre, ce qu'on reporte, et pourquoi.",
+  "why.mainSecondary": "Vous combinez un dev front créatif et exigeant avec un interlocuteur qui pense coût de maintenance, time-to-market et valeur livrée — sans posture consultant, avec le même objectif : un produit qui tient et qui rapporte.",
+  "why.short": "Vision produit · Culture PO/PM · Rentabilité · Craft · Autonomie",
 
   "contact.label": "Contact",
   "contact.title": "Parlons de votre prochain produit.",
