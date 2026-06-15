@@ -557,7 +557,7 @@
   color: var(--color-text);
 }
 
-.whyPanel {
+.impactPanel {
   background: linear-gradient(
     155deg,
     color-mix(in srgb, var(--section-projects-mid) 70%, var(--color-bg)) 0%,
@@ -567,11 +567,50 @@
   backdrop-filter: none;
 }
 
+.contentSectionSplit {
+  gap: 0;
+}
+
+.splitLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(240px, 0.92fr);
+  gap: clamp(1.1rem, 2.8vw, 2rem);
+  align-items: center;
+  min-width: 0;
+}
+
+.splitCopy {
+  display: grid;
+  gap: 1.1rem;
+  min-width: 0;
+}
+
+.impactChartSlot {
+  align-self: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  overflow: visible;
+}
+
+@media (max-width: 820px) {
+  .splitLayout {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .impactChartSlot {
+    width: min(100%, 24rem);
+    margin-inline: auto;
+  }
+}
+
 .expertisePanel .sectionHeading h2,
 .methodologyPanel .sectionHeading h2,
 .valuesPanel .sectionHeading h2,
 .stackPanel .sectionHeading h2,
-.whyPanel .sectionHeading h2,
+.impactPanel .sectionHeading h2,
 .projectsPanel .sectionHeading h2 {
   max-width: 28ch;
 }

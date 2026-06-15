@@ -24,6 +24,7 @@ type Props = {
   pillsKey?: string;
   ariaLabel?: string;
   visualSlotClassName?: string;
+  layout?: "stack" | "split";
   backdrop?: React.ReactNode;
   children?: React.ReactNode;
 };
@@ -39,6 +40,7 @@ export function ContentSection({
   pillsKey,
   ariaLabel,
   visualSlotClassName,
+  layout = "stack",
   backdrop,
   children,
 }: Props) {
@@ -47,46 +49,78 @@ export function ContentSection({
     ? splitPills(intl.formatMessage({ id: pillsKey }))
     : [];
 
+  const heading = (
+    <motion.div className={styles.sectionHeading} variants={sectionRevealItem}>
+      <span>{intl.formatMessage({ id: labelKey })}</span>
+      <h2>{intl.formatMessage({ id: titleKey })}</h2>
+    </motion.div>
+  );
+
+  const hook = (
+    <motion.p className={styles.sectionHook} variants={sectionRevealItem}>
+      {intl.formatMessage({ id: hookKey })}
+    </motion.p>
+  );
+
+  const body = bodyKey ? (
+    <motion.p className={styles.panelBody} variants={sectionRevealItem}>
+      {intl.formatMessage({ id: bodyKey })}
+    </motion.p>
+  ) : null;
+
+  const bodySecondary = bodySecondaryKey ? (
+    <motion.p className={styles.panelBody} variants={sectionRevealItem}>
+      {intl.formatMessage({ id: bodySecondaryKey })}
+    </motion.p>
+  ) : null;
+
+  const visual = children ? (
+    <motion.div
+      className={`${styles.visualSlot} ${visualSlotClassName ?? ""}`.trim()}
+      variants={sectionRevealItem}
+    >
+      {children}
+    </motion.div>
+  ) : null;
+
+  const pillsList =
+    pills.length > 0 ? (
+      <motion.ul className={styles.contentPills} variants={sectionRevealItem}>
+        {pills.map((pill) => (
+          <li key={pill}>{pill}</li>
+        ))}
+      </motion.ul>
+    ) : null;
+
   return (
     <SectionReveal
       as="section"
       id={id}
-      className={`${styles.contentSection} ${className} ${backdrop ? styles.mediaPanel : ""}`.trim()}
+      className={`${styles.contentSection} ${className} ${layout === "split" ? styles.contentSectionSplit : ""} ${backdrop ? styles.mediaPanel : ""}`.trim()}
       ariaLabel={ariaLabel}
     >
       {backdrop}
-      <motion.div className={styles.sectionHeading} variants={sectionRevealItem}>
-        <span>{intl.formatMessage({ id: labelKey })}</span>
-        <h2>{intl.formatMessage({ id: titleKey })}</h2>
-      </motion.div>
-      <motion.p className={styles.sectionHook} variants={sectionRevealItem}>
-        {intl.formatMessage({ id: hookKey })}
-      </motion.p>
-      {bodyKey ? (
-        <motion.p className={styles.panelBody} variants={sectionRevealItem}>
-          {intl.formatMessage({ id: bodyKey })}
-        </motion.p>
-      ) : null}
-      {bodySecondaryKey ? (
-        <motion.p className={styles.panelBody} variants={sectionRevealItem}>
-          {intl.formatMessage({ id: bodySecondaryKey })}
-        </motion.p>
-      ) : null}
-      {children ? (
-        <motion.div
-          className={`${styles.visualSlot} ${visualSlotClassName ?? ""}`.trim()}
-          variants={sectionRevealItem}
-        >
-          {children}
-        </motion.div>
-      ) : null}
-      {pills.length > 0 ? (
-        <motion.ul className={styles.contentPills} variants={sectionRevealItem}>
-          {pills.map((pill) => (
-            <li key={pill}>{pill}</li>
-          ))}
-        </motion.ul>
-      ) : null}
+      {layout === "split" ? (
+        <div className={styles.splitLayout}>
+          <div className={styles.splitCopy}>
+            {heading}
+            {hook}
+            {body}
+            {bodySecondary}
+            {pillsList}
+          </div>
+          {visual}
+        </div>
+      ) : (
+        <>
+          {heading}
+          {hook}
+          {body}
+          {bodySecondary}
+          {visual}
+          {pillsList}
+        </>
+      )}
     </SectionReveal>
   );
 }

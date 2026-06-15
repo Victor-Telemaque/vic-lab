@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { CloudCurtainSection } from '@/components/effects/cloud-curtain';
+import { DeliveryGrowthChart } from '@/components/effects/delivery-growth-chart';
 import { PastelRainbowArc } from '@/components/effects/pastel-rainbow-arc';
 import { SitePastelBackground } from '@/components/effects/site-pastel-background';
 import {
@@ -285,15 +286,19 @@ function PortfolioHomeContent({
         </ContentSection>
 
         <ContentSection
-          id="why"
-          className={`${styles.whyPanel} ${styles.contentPanel}`}
+          id="impact"
+          layout="split"
+          className={`${styles.impactPanel} ${styles.contentPanel}`}
           labelKey="why.label"
           titleKey="why.title"
           hookKey="why.hook"
           bodyKey="why.main"
           bodySecondaryKey="why.mainSecondary"
           pillsKey="why.short"
-        />
+          visualSlotClassName={styles.impactChartSlot}
+        >
+          <DeliveryGrowthChart />
+        </ContentSection>
 
         <div className={styles.contactAnchor}>
           <SectionReveal
